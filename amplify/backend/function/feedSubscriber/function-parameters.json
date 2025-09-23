@@ -1,0 +1,38 @@
+{
+  "permissions": {
+    "analytics": {
+      "doceonew": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    },
+    "api": {
+      "doceonew": [
+        "Query",
+        "Mutation",
+        "Subscription"
+      ]
+    },
+    "auth": {
+      "doceonew9d5671b29d5671b2": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "lambdaLayers": [],
+  "environmentVariableList": [
+    {
+      "cloudFormationParameterName": "streamKey",
+      "environmentVariableName": "STREAM_KEY"
+    },
+    {
+      "cloudFormationParameterName": "streamSecret",
+      "environmentVariableName": "STREAM_SECRET"
+    }
+  ]
+}

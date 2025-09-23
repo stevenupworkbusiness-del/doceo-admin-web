@@ -1,0 +1,20 @@
+{
+    "Records": [
+        {
+            "messageId": "73618ec7-7c84-4e66-a2e4-427612a3fbdb",
+            "receiptHandle": "AQEBYbESkaTDRaVuD7ANnu+k3asc/4y9QvfYrE3z5n9PwmEs7cGKuB7eTiDHscZoQKJ6Q0S2NEbQ1gyGhK102CFeAcb7R/Ujbv2P51FKzQD8F69u+UZyRsy7bBxWFeiSFrjqNIq8y/+PCEd71O34CPrLQy5NtOA+03yJLyOrO60qrrO+qB8dLAYJRt4RVjB5Ale/z+lhUudhc2MaPKFt0DymY/pJ3cFFhCOHD3Rl+diLEuUga6wveTRXkejqemiWqDdIlI5kkibfTKu+SdVCW6slCummhTHLFZUregYnQUIFK7bE6CfLF0OO/5rgAsSLZi4k8/Nbv+6Doa4amtJOp9unoyoMCzoPQikN5LFAUS6Jo6IXKfQ7FwZT28i+ouOm1YDUAAXITUUdXaCjearYk9m3ng==",
+            "body": "W3siYXBwX2lkIjoxMjMzOTYyLCJwdWJsaXNoZWRfYXQiOiIyMDIzLTEyLTE0VDA3OjQ1OjUxLjY5MDQyNjU1NloiLCJuZXciOlt7ImFjdG9yIjp7ImNyZWF0ZWRfYXQiOiIyMDIzLTA5LTI3VDE3OjQ4OjE3LjU3NzMxNloiLCJkYXRhIjp7ImF2YXRhciI6Imh0dHBzOi8vZG9jZW8tYXNzZXQuczMuYXAtbm9ydGhlYXN0LTEuYW1hem9uYXdzLmNvbS91c2VyLWljb25zL2F2YXRhcl84LnBuZyIsImJpcnRoZGF5IjoiMTAvMDQvMTk5NSIsImdlbmRlciI6IueUt+aApyIsIm5hbWUiOiJEYW5pZWwgSG9uZyIsInJvbGUiOiJ1c2VyIn0sImlkIjoiZjFiYmM5MTMtOTEyMi00MDM2LTg2Y2UtYjA0ZDdmYjUyZDFlIiwidXBkYXRlZF9hdCI6IjIwMjMtMTAtMzBUMDk6NDY6NDguMTAyMjIxWiJ9LCJlbW90aW9uIjoiIiwiZmlsZVBhdGgiOiIiLCJmaWxlVHlwZSI6IiIsImZvcmVpZ25faWQiOiJmMWJiYzkxMy05MTIyLTQwMzYtODZjZS1iMDRkN2ZiNTJkMWU6dHdlZXQ6MTcwMjUzOTk0NTE3MSIsImlkIjoiYzllMTlhODAtOWE1NC0xMWVlLTgwODAtODAwMTI5YTVmYjg2IiwibWVzc2FnZSI6Ik5vdGlmaWNhdGlvbiIsIm9iamVjdCI6InR3ZWV0OmlkIiwib3JpZ2luIjpudWxsLCJwdWJsaXNoIjoicHVibGljIiwicm9vbSI6ImZkZTk1NDFjLWU0YjAtNTRhOS05ODUwLWExZTJkZmJkYzI3MSIsInRhcmdldCI6IiIsInRpbWUiOiIyMDIzLTEyLTE0VDA3OjQ1OjQ1LjAwMDAwMCIsInRvIjpbInVzZXI6YWxsIiwicm9vbTpmZGU5NTQxYy1lNGIwLTU0YTktOTg1MC1hMWUyZGZiZGMyNzEiXSwidXNlcnRhZyI6IiIsInZlcmIiOiJ0d2VldCJ9XSwiZGVsZXRlZCI6W10sImRlbGV0ZWRfZm9yZWlnbl9pZHMiOltdLCJmZWVkIjoicm9vbTpmZGU5NTQxYy1lNGIwLTU0YTktOTg1MC1hMWUyZGZiZGMyNzEifV0=",
+            "attributes": {
+                "ApproximateReceiveCount": "1",
+                "SentTimestamp": "1702539952297",
+                "SenderId": "AIDAW72OLJ3Y5D5G235YD",
+                "ApproximateFirstReceiveTimestamp": "1702539953407"
+            },
+            "messageAttributes": {},
+            "md5OfBody": "0594e57656c77059ec05776b8c455102",
+            "eventSource": "aws:sqs",
+            "eventSourceARN": "arn:aws:sqs:ap-northeast-1:480663785201:Doceo-Feed",
+            "awsRegion": "ap-northeast-1"
+        }
+    ]
+}

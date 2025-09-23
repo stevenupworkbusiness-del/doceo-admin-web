@@ -1,0 +1,263 @@
+.dropdown-menu {
+  @apply absolute z-50 m-0;
+}
+
+.dropdown-menu.dropdown-menu-right {
+  @apply absolute right-0;
+}
+
+.dropdown-menu.dropdown-menu-center {
+  @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2;
+}
+
+.form-control {
+  @apply bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded focus:ring-primary-500 dark:focus-visible:outline-none focus:border-primary-500 block w-full p-2.5 dark:bg-slate-700 dark:border-slate-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-400 dark:focus:border-primary-400;
+}
+
+.label {
+  @apply block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300;
+}
+
+.btn {
+  @apply text-sm font-medium py-2 px-3 rounded;
+}
+
+/* selecter */
+.selectr-options-container,
+.selectr-selected {
+  @apply bg-slate-50 border-slate-200 dark:bg-slate-700 dark:border-slate-700 dark:text-slate-300;
+}
+
+.selectr-tag-input {
+  @apply bg-slate-50 p-0 dark:bg-slate-700 focus-visible:outline-none;
+}
+
+.selectr-option.selected {
+  @apply bg-slate-50 dark:bg-slate-800;
+}
+
+.selectr-input {
+  @apply border-slate-200 dark:border-slate-700 dark:bg-slate-700 dark:focus-visible:outline-none dark:focus:border-blue-400;
+}
+
+.selectr-container.open .selectr-selected {
+  @apply border-t-slate-100 dark:border-t-slate-900 border-l-slate-100 dark:border-l-slate-900 border-b-transparent rounded-tr rounded-tl;
+}
+
+.selectr-tag {
+  @apply bg-primary-500 rounded;
+}
+
+.selectr-tag-remove::after,
+.selectr-tag-remove::before {
+  width: 1px;
+}
+
+.taggable .selectr-selected {
+  padding: 7px 28px 7px 14px;
+}
+
+
+/*  Datepicker */
+.datepicker.active {
+  @apply inline-block border border-slate-100 rounded dark:border-slate-600;
+}
+
+.datepicker-dropdown.datepicker-orient-top {
+  @apply pb-0;
+}
+
+.datepicker-header .datepicker-controls .button {
+  @apply font-medium dark:bg-slate-900/20 dark:text-slate-300;
+}
+
+.datepicker-controls .button {
+  @apply bg-slate-50 text-sm border border-slate-100 text-slate-700;
+}
+
+.datepicker-view .dow {
+  @apply font-medium text-xs dark:text-slate-300;
+}
+
+.datepicker-view .days .datepicker-cell {
+  @apply dark:text-slate-400;
+}
+
+.datepicker-cell.next:not(.disabled),
+.datepicker-cell.prev:not(.disabled) {
+  @apply dark:text-slate-600;
+}
+
+.datepicker-picker {
+  @apply bg-white dark:bg-slate-700;
+}
+
+.datepicker-picker span {
+  @apply rounded-lg;
+}
+
+.datepicker-cell.focused:not(.selected),
+.datepicker-cell:not(.disabled):hover {
+  @apply bg-slate-100 text-primary-500 dark:bg-slate-900/20 dark:text-slate-100;
+}
+
+/* Form Validation */
+
+#form-validation small {
+  @apply hidden text-red-500;
+}
+
+#form-validation small.error {
+  @apply block;
+}
+
+.form-control.error {
+  @apply border-red-500;
+}
+
+.form-control.success {
+  @apply border-green-500;
+}
+
+.custom-checkbox .checked,
+.custom-checkbox input[type=checkbox] {
+  display: none;
+}
+
+.custom-checkbox input[type=checkbox]:checked~.unchecked {
+  display: none;
+}
+
+.custom-checkbox input[type=checkbox]:checked~.checked {
+  display: inline-block;
+}
+
+/* Form Upload */
+
+.uppy-Dashboard-inner {
+  @apply dark:bg-slate-900/20 dark:border-slate-700;
+}
+
+[data-uppy-drag-drop-supported=true] .uppy-Dashboard-AddFiles,
+.uppy-Dashboard-dropFilesHereHint {
+  @apply dark:border-slate-700;
+}
+
+.uppy-Dashboard-AddFiles-title {
+  @apply dark:text-slate-400;
+}
+
+/* Modal */
+.modal {
+  @apply fixed top-0 hidden left-0 h-full w-full z-50 overflow-x-hidden overflow-y-auto;
+}
+
+/* .modal .modal-dialog {
+    @apply translate-x-0 translate-y-12;
+} */
+
+.modal.fade {
+  @apply animate-ModalSlide;
+}
+
+.modal-dialog {
+  @apply relative w-auto pointer-events-none sm:max-w-lg sm:my-7 sm:mx-auto;
+  z-index: 9999 !important;
+}
+
+.modal-content {
+  @apply relative flex flex-col w-full pointer-events-auto bg-white dark:bg-slate-800 bg-clip-padding rounded;
+}
+
+.modal-header {
+  @apply flex shrink-0 items-center justify-between p-4 rounded-l rounded-r border-b dark:border-gray-700;
+}
+
+.modal-title {
+  @apply mb-0 leading-6 text-base font-medium text-gray-800 dark:text-gray-300;
+}
+
+.modal-body {
+  @apply relative flex-auto p-4 text-slate-600 dark:text-gray-300;
+}
+
+.modal-footer {
+  @apply flex flex-wrap shrink-0 justify-end p-3 rounded-l rounded-r border-t dark:border-gray-700;
+}
+
+.modal-header .btn-close {
+  @apply text-3xl p-2 ml-auto leading-[0] opacity-50 hover:opacity-75 dark:text-gray-300 cursor-pointer self-center;
+}
+
+.modal-filled {
+  @apply text-white dark:text-white !important;
+}
+
+.modal-danger {
+  @apply bg-red-500 !important;
+}
+
+.btn-close {
+  @apply box-content w-4 h-4 p-1 bg-transparent rounded opacity-50;
+}
+
+/* Model Sizes */
+
+.modal-sm {
+  @apply sm:max-w-xs;
+}
+
+.modal-lg {
+  @apply lg:max-w-4xl;
+}
+
+.modal-xl {
+  @apply xl:max-w-6xl;
+}
+
+.modal-fullwidth {
+  @apply max-w-none w-[94%];
+}
+
+/* .modal-dialog-scrollable {
+     @apply h-120 !important ; 
+} */
+
+.modal-dialog-scrollable {
+  @apply h-96 max-h-full overflow-y-auto;
+}
+
+.modal-dialog-scrollable .modal-content {
+  @apply overflow-hidden max-h-full;
+}
+
+.modal-dialog-scrollable .modal-body {
+  @apply overflow-y-auto;
+}
+
+/* Modal Direction */
+
+.modal-right {
+  @apply fixed top-0 right-0 flex flex-nowrap justify-center h-full w-64 m-0 bg-white dark:bg-gray-600 items-center animate-none transition-all delay-0 duration-500 ease-in;
+}
+
+.modal.block .modal-right {
+  @apply transform translate-x-0 translate-y-0 !important;
+}
+
+.modal-bottom {
+  @apply flex h-full my-0 mx-auto content-center justify-end flex-nowrap flex-col;
+}
+
+.modal-top {
+  @apply my-0 mx-auto !important;
+}
+
+.modal-dialog-center {
+  @apply flex items-center;
+  height: calc(100% - 3.5rem);
+}
+
+.modal-overlay {
+  @apply bg-gray-900 dark:bg-gray-900 opacity-70 fixed left-0 right-0 bottom-0 top-0 z-40 transition-all duration-1000 ease-out;
+}

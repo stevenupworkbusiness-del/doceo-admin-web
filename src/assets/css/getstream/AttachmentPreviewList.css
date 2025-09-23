@@ -1,0 +1,134 @@
+.str-chat {
+    /* The border radius used for the borders of the component */
+    --str-chat__attachment-preview-list-border-radius: 14px;
+    --str-chat__spacing-px: 1px;
+
+    /* The text/icon color of the component */
+    --str-chat__attachment-preview-list-color: #080707;
+
+    /* The background color of the component */
+    --str-chat__attachment-preview-list-background-color: transparent;
+
+    /* Top border of the component */
+    --str-chat__attachment-preview-list-border-block-start: none;
+
+    /* Bottom border of the component */
+    --str-chat__attachment-preview-list-border-block-end: none;
+
+    /* Left (right in RTL layout) border of the component */
+    --str-chat__attachment-preview-list-border-inline-start: none;
+
+    /* Right (left in RTL layout) border of the component */
+    --str-chat__attachment-preview-list-border-inline-end: none;
+
+    /* Box shadow applied to the component */
+    --str-chat__attachment-preview-list-box-shadow: none;
+
+    /* Background color of the preview delete icon */
+    --str-chat__attachment-preview-close-icon-background: rgba(0,0,0,.2);
+
+    /* Foreground color of the preview delete icon */
+    --str-chat__attachment-preview-close-icon-color: #fff;
+
+    /* Color of the upload retry icon */
+    --str-chat__attachment-preview-retry-icon-color: #005fff;
+
+    /* Color of the preview download icon */
+    --str-chat__attachment-preview-download-icon-color: #72767e;
+
+    /* Overlay color applied to attachment previews during upload and if an error occured during upload */
+    --str-chat__attachment-preview-overlay-color: hsla(0,0%,98.8%,0.9);
+
+    /* The border radius used for the borders of the image preview */
+    --str-chat__attachment-preview-image-border-radius: 14px;
+
+    /* The text/icon color of the image preview */
+    --str-chat__attachment-preview-image-color: #080707;
+
+    /* The background color of the image preview */
+    --str-chat__attachment-preview-image-background-color: transparent;
+
+    /* Top border of the image preview */
+    --str-chat__attachment-preview-image-border-block-start: none;
+
+    /* Bottom border of the image preview */
+    --str-chat__attachment-preview-image-border-block-end: none;
+
+    /* Left (right in RTL layout) border of the image preview */
+    --str-chat__attachment-preview-image-border-inline-start: none;
+
+    /* Right (left in RTL layout) border of the image preview */
+    --str-chat__attachment-preview-image-border-inline-end: none;
+
+    /* Box shadow applied to the image preview */
+    --str-chat__attachment-preview-image-box-shadow: none;
+
+    /* The border radius used for the borders of the file preview */
+    --str-chat__attachment-preview-file-border-radius: 18px;
+
+    /* The text/icon color of the file preview */
+    --str-chat__attachment-preview-file-color: #080707;
+
+    /* The background color of the file preview */
+    --str-chat__attachment-preview-file-background-color: transparent;
+
+    /* Top border of the file preview */
+    --str-chat__attachment-preview-file-border-block-start: 1px solid #dbdde1;
+
+    /* Bottom border of the file preview */
+    --str-chat__attachment-preview-file-border-block-end: 1px solid #dbdde1;
+
+    /* Left (right in RTL layout) border of the file preview */
+    --str-chat__attachment-preview-file-border-inline-start: 1px solid #dbdde1;
+
+    /* Right (left in RTL layout) border of the file preview */
+    --str-chat__attachment-preview-file-border-inline-end: 1px solid #dbdde1;
+
+    /* Box shadow applied to the file preview */
+    --str-chat__attachment-preview-file-box-shadow: none;
+}
+
+/* .str-chat__attachment-preview-list { */
+
+.str-chat__attachment-preview-list .str-chat__attachment-list-scroll-container {
+    border-radius: inherit;
+}
+
+.str-chat__attachment-preview-list .str-chat__attachment-preview-image .str-chat__attachment-preview-thumbnail,
+.str-chat__attachment-preview-list .str-chat__attachment-preview-image .str-chat__attachment-preview-image-loading {
+    border-radius: var(--str-chat__attachment-preview-image-border-radius);
+    background-color: var(--str-chat__attachment-preview-overlay-color);
+}
+
+.str-chat__attachment-preview-list .str-chat__attachment-preview-file .str-chat__attachment-preview-file-name {
+    font: var(--str-chat__subtitle-medium-text);
+}
+
+.str-chat__attachment-preview-list .str-chat__attachment-preview-file .str-chat__attachment-preview-file-download svg path {
+    fill: var(--str-chat__attachment-preview-download-icon-color);
+}
+
+.str-chat__attachment-preview-list .str-chat__attachment-preview-delete svg {
+    background-color: var(--str-chat__attachment-preview-close-icon-background);
+    border-radius: 999px;
+}
+
+.str-chat__attachment-preview-list .str-chat__attachment-preview-delete svg path {
+    fill: var(--str-chat__attachment-preview-close-icon-color);
+}
+
+.str-chat__attachment-preview-list .str-chat__attachment-preview-error {
+    background-color: var(--str-chat__attachment-preview-overlay-color);
+}
+
+.str-chat__attachment-preview-list .str-chat__attachment-preview-error svg path {
+    fill: var(--str-chat__attachment-preview-retry-icon-color);
+}
+
+.str-chat__attachment-preview-list .str-chat__attachment-preview-error.str-chat__attachment-preview-error-image {
+    border-radius: var(--str-chat__attachment-preview-image-border-radius);
+}
+
+.str-chat__attachment-preview-list .str-chat__attachment-preview-error.str-chat__attachment-preview-error-file {
+    border-radius: var(--str-chat__attachment-preview-file-border-radius);
+}

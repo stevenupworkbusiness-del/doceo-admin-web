@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "storage": {
+      "doceo": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "lambdaLayers": [
+    {
+      "type": "ProjectLayer",
+      "resourceName": "doceonewffmpeg",
+      "env": "drapp",
+      "version": "Always choose latest version",
+      "isLatestVersionSelected": true
+    }
+  ]
+}

@@ -1,0 +1,249 @@
+# This "input" configures a global authorization rule to enable public access to
+# all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
+# input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!Toe
+
+type Channel {
+  id: String!
+  type: String
+  image: String
+  name: String
+  description: String
+  feedsCount: Int
+  doctorFeedsCount: Int
+  researchFeedsCount: Int
+  questions: [String]
+  tags: [String]
+  owner: String
+  disabled: Boolean
+  frozen: Boolean
+  category: String
+  subcat: String
+  intractable: String
+  billable: Boolean
+  checkout_url: String
+  price: String
+  price_desc: String
+  startTime: String
+  endTime: String
+  terms: String
+  isCustomTerm: String
+}
+
+type User {
+  name: String
+  role: String
+  image: String
+  firstName: String
+  lastName: String
+  category: String
+}
+
+type Member {
+  user_id: String
+  user: User
+  role: String
+}
+
+type Message {
+  type: String
+  author_name: String
+  text: String
+}
+
+type ChannelDetail {
+  channel: Channel!
+  members: [Member]!
+  messages: [Message]!
+}
+
+type CreateUserTokenResponse {
+  token: String!
+  rooms: [ChannelDetail]!
+}
+
+type Query {
+  CreateUserToken(id: ID!): CreateUserTokenResponse
+    @function(name: "createGetStreamToken-${env}")
+    @auth(rules: [{ allow: private, provider: iam }])
+
+  getRoomChannels(room_id: String!): [ChannelDetail]!
+    @function(name: "getRoomChannels-${env}")
+    @auth(rules: [{ allow: private, provider: iam }])
+
+  sendPushNotification(type: String!, channel: String!, text: String!): Boolean
+    @function(name: "sendPushNotifications-${env}")
+    @auth(rules: [{ allow: private, provider: iam }])
+}
+
+type Hospital
+  @model
+  @auth(
+    rules: [
+      { allow: public, operations: [read], provider: apiKey }
+      {
+        allow: private
+        operations: [create, read, update, delete]
+        provider: iam
+      }
+    ]
+  ) {
+  id: ID!
+  name: String
+  address: String
+  homePageUrl: String
+  logo: String
+  introductionImage: String
+}
+
+type Specialty @model @auth(rules: [{ allow: private, provider: iam }]) {
+  id: ID!
+  specialty: String!
+}
+
+type MedicalSpecialist
+  @model
+  @auth(rules: [{ allow: private, provider: iam }]) {
+  id: ID!
+  medicalSpecialist: String!
+}
+
+type Trouble @model @auth(rules: [{ allow: private, provider: iam }]) {
+  id: ID!
+  trouble: String!
+}
+
+type Notification @model @auth(rules: [{ allow: private, provider: iam }]) {
+  id: ID!
+  type: String!
+  channel: String
+  text: String!
+}
+
+type PointHistory @model @auth(rules: [{ allow: private, provider: iam }]) {
+  id: ID!
+  type: String!
+  point: Int!
+  userId: String!
+  text: String!
+  doctorId: String
+  messageId: String
+}
+
+type RoomSuggestion @model @auth(rules: [{ allow: private, provider: iam }]) {
+  id: ID!
+  userId: String!
+  roomId: String!
+  suggestion: String!
+}
+
+type Tag
+  @model
+  @auth(
+    rules: [
+      { allow: public, operations: [read] }
+      { allow: private, provider: iam }
+    ]
+  ) {
+  id: ID!
+  name: String!
+  users: [UserTag] @hasMany(indexName: "byTag", fields: ["id"])
+  feedsCount: Int
+  categoryId: ID @index(name: "byCategory")
+  category: Category @belongsTo(fields: ["categoryId"])
+}
+
+type Category
+  @model
+  @auth(
+    rules: [
+      { allow: public, operations: [read], provider: apiKey }
+      { allow: private, provider: iam }
+    ]
+  ) {
+  id: ID!
+  name: String!
+  order: Int
+  description: String
+  image: String
+  tags: [Tag] @hasMany(indexName: "byCategory", fields: ["id"])
+}
+
+type UserTag @model @auth(rules: [{ allow: private, provider: iam }]) {
+  id: ID!
+  userId: String! @index(name: "byUser", sortKeyFields: ["tagId"])
+  tagId: ID! @index(name: "byTag", sortKeyFields: ["userId"])
+  tag: Tag @belongsTo(fields: ["tagId"])
+}
+
+type Questionnaire @model @auth(rules: [{ allow: private, provider: iam }]) {
+  id: ID!
+  roomId: String!
+  question: String!
+  users: [UserQuestionnaire] @hasMany(indexName: "byQuestion", fields: ["id"])
+}
+
+type UserQuestionnaire
+  @model
+  @auth(rules: [{ allow: private, provider: iam }]) {
+  id: ID! @index(name: "byQuestion", sortKeyFields: ["questionId", "userId"])
+  userId: String!
+  questionId: ID!
+}
+
+type UserDevice
+  @model
+  @auth(
+    rules: [
+      { allow: public, operations: [create, read] }
+      { allow: private, provider: iam }
+    ]
+  ) {
+  id: ID!
+  userId: String! @index(name: "byUser")
+  token: String!
+}
+
+type Membership
+  @model
+  @auth(
+    rules: [
+      { allow: public, operations: [create, read, delete], provider: apiKey }
+    ]
+  ) {
+  id: ID!
+  email: String!
+  room: String!
+  price: Int!
+}
+
+type Mutation {
+  batchCreateUserTag(tags: [BatchCreateUserTag]): [UserTag]
+
+  batchDeleteUserTag(deleteIds: [ID!]): [UserTag]
+
+  addToCollection(
+    foreignId: String!
+    time: String!
+    userId: String!
+    targetId: String!
+  ): String
+    @function(name: "addToCollection-${env}")
+    @auth(rules: [{ allow: private, provider: iam }])
+
+  updateCategoryOrder(categories: [UpdateCategoryOrder]): [Category]
+}
+
+input BatchCreateUserTag {
+  id: ID
+  userId: String!
+  tagId: ID!
+}
+
+input UpdateCategoryOrder {
+  id: ID!
+  order: Int
+  name: String!
+  description: String
+  image: String
+  createdAt: String!
+}

@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@import "custom/_general.css";
+@import "custom/_components.css";
+@import "custom/_tables.css";
+@import "custom/_form.css";
+@import "getstream/AttachmentPreviewListLayout.css";
+@import "getstream/AttachmentPreviewList.css";
+@import "getstream/ChannelContainer.css";
+@import "getstream/ChannelEmptyState.css";
+@import "getstream/ChannelListContainer.css";
+@import "getstream/ChannelList.css";
+@import "getstream/ChannelSearch.css";
+@import "getstream/CreateChannel.css";
+@import "getstream/EditChannel.css";
+@import "getstream/PinnedMessageList.css";
+@import "getstream/TeamChannelHeader.css";
+@import "getstream/TeamChannelList.css";
+@import "getstream/TeamChannelPreview.css";
+@import "getstream/TeamMessage.css";
+@import "getstream/TeamMessageInput.css";
+@import "getstream/TeamTypingIndicator.css";
+@import "getstream/ThreadMessageInput.css";
+@import "getstream/UserList.css";
+@import "getstream/Feed.css";
+
+@tailwind utilities;
+
+
+
+/*  ************************************ */
+.dropdown-menu-item,
+.nav-link {
+    @apply block py-2 px-8 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-500 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-blue-500 lg:px-4;
+}
+
+/* Button */
+.btn-primary {
+    @apply rounded bg-blue-500 py-2 px-4 font-semibold text-white shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75;
+}
+
+/*  Card */
+.card {
+    @apply bg-white dark:bg-slate-800 shadow rounded-md w-full relative;
+}
+
+.card-header {
+    @apply border-b border-dashed border-slate-200 dark:border-slate-700 p-4 dark:text-slate-300;
+}
+
+.card-title {
+    @apply font-medium;
+}
+
+.card-body {
+    @apply flex-auto p-4;
+}
+
+/* ************************************ */
+
+
+/*  ************************************ */
+input,
+textarea,
+button,
+select,
+a {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    position: relative;
+}
+
+
+[role="tab"].active {
+    color: theme('colors.blue.600') !important;
+    border-color: theme('colors.blue.600') !important;
+}
+
+
+[role="tab"].active:hover {
+    color: theme('colors.blue.600') !important;
+    border-color: theme('colors.blue.600') !important;
+}
+
+[role="tab-pill"].active {
+    color: theme('colors.slate.600') !important;
+    border-color: theme('colors.slate.300') !important;
+}
+
+.dark [role="tab-pill"].active {
+    color: theme('colors.slate.300') !important;
+    border-color: theme('colors.slate.700') !important;
+}
+
+[role="tab-pill"].active:hover {
+    color: theme('colors.slate.600') !important;
+    border-color: theme('colors.slate.300') !important;
+}
+
+.dark [role="tab-pill"].active:hover {
+    color: theme('colors.slate.200') !important;
+    border-color: theme('colors.slate.600') !important;
+}
+
+.custom-label input:checked+i {
+    display: block !important;
+}
+
+.custom-switch {
+    transition: .4s;
+}
+
+.custom-switch::before {
+    position: absolute;
+    content: "";
+    height: 12px;
+    width: 12px;
+    left: 17px;
+    top: 1px;
+    transition: .4s;
+    background: theme('colors.slate.400');
+    border-radius: 50%;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+input:checked+.custom-switch {
+    /* background: theme('colors.red.500') !important; */
+}
+
+input:checked+.custom-switch.switch-green {
+    background: theme('colors.green.500') !important;
+}
+
+input:checked+.custom-switch:before {
+    transform: translateX(-16px);
+    background: theme('colors.white');
+}
+
+/* Getstream Style */
+.str-chat-channel-list {
+    height: fit-content;
+    margin-bottom: 8px;
+}
+  
+.str-chat-channel {
+height: 100%;
+}
+
+.str-chat__load-more-button {
+display: none;
+}
+
+.str-chat__input-footer {
+display: none;
+}
+
+.str-chat__date-separator {
+margin: 16px 24px;
+}
+
+.str-chat__message-notification {
+background: #005fff;
+cursor: pointer;
+}
+
+@media screen and (max-width: 960px) {
+    .str-chat-channel-list.team {
+        position: unset;
+        left: unset;
+        top: unset;
+        z-index: unset;
+        min-height: unset;
+        overflow-y: unset;
+        box-shadow: unset;
+        transition: unset;
+    }
+}
+
+
+/*  Card */
+
+.card {
+    position: relative;
+    width: 100%;
+    border-radius: 0.375rem;
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+    --tw-shadow: 0 0 3px rgb(60 72 88 / 0.15);
+    --tw-shadow-colored: 0 0 3px var(--tw-shadow-color);
+    -webkit-box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  }
+  
+  .dark .card {
+    --tw-bg-opacity: 1;
+    background-color: rgb(30 41 59 / var(--tw-bg-opacity));
+  }
+  
+  .card-header {
+    border-bottom-width: 1px;
+    border-style: dashed;
+    --tw-border-opacity: 1;
+    border-color: rgb(226 232 240 / var(--tw-border-opacity));
+    padding: 1rem;
+  }
+  
+  .dark .card-header {
+    --tw-border-opacity: 1;
+    border-color: rgb(51 65 85 / var(--tw-border-opacity));
+    --tw-text-opacity: 1;
+    color: rgb(203 213 225 / var(--tw-text-opacity));
+  }
+  
+  .card-title {
+    font-weight: 500;
+  }
+  
+  .card-body {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+    padding: 1rem;
+  }

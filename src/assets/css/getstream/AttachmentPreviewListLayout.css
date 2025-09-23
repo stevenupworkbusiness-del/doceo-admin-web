@@ -1,0 +1,178 @@
+
+
+.str-chat {
+    /* Used for elements where sizing is necessary (such as icons, avatar), you can use this variable to scale those elements */
+    --str-chat__spacing-px: 1px;
+
+    /* Used for margins and paddings */
+    --str-chat__spacing-0_5: 0.125rem;
+
+    /* Used for margins and paddings */
+    --str-chat__spacing-1: 0.25rem;
+
+    /* Used for margins and paddings */
+    --str-chat__spacing-1_5: 0.375rem;
+
+    /* Used for margins and paddings */
+    --str-chat__spacing-2: 0.5rem;
+
+    /* Used for margins and paddings */
+    --str-chat__spacing-2_5: 0.625rem;
+
+    /* Used for margins and paddings */
+    --str-chat__spacing-3: 0.75rem;
+
+    /* Used for margins and paddings */
+    --str-chat__spacing-3_5: 0.875rem;
+
+    /* Used for margins and paddings */
+    --str-chat__spacing-4: 1rem;
+
+    /* Used for margins and paddings */
+    --str-chat__spacing-5: 1.25rem;
+
+    /* Used for margins and paddings */
+    --str-chat__spacing-6: 1.5rem;
+
+    /* Used for margins and paddings */
+    --str-chat__spacing-7: 1.75rem;
+
+    /* Used for margins and paddings */
+    --str-chat__spacing-8: 2rem;
+
+    /* Used for margins and paddings */
+    --str-chat__spacing-9: 2.25rem;
+
+    /* Used for margins and paddings */
+    --str-chat__spacing-10: 2.5rem;
+
+    /* Used for margins and paddings */
+    --str-chat__spacing-11: 2.75rem;
+
+    /* Used for margins and paddings */
+    --str-chat__spacing-12: 3rem;
+
+    /* Used for margins and paddings */
+    --str-chat__spacing-14: 3.5rem;
+
+    /* Used for margins and paddings */
+    --str-chat__spacing-16: 4rem;
+  }
+
+
+.str-chat__attachment-preview-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--str-chat__spacing-1_5);
+    width: 100%;
+}
+.str-chat__attachment-preview-list .str-chat__attachment-list-scroll-container {
+    overflow-y: hidden;
+    overflow-x: auto;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: var(--str-chat__spacing-2);
+}
+.str-chat__attachment-preview-list .str-chat__attachment-preview-image {
+    position: relative;
+    height: calc(var(--str-chat__spacing-px) * 72);
+    width: calc(var(--str-chat__spacing-px) * 72);
+}
+.str-chat__attachment-preview-list .str-chat__attachment-preview-image .str-chat__attachment-preview-image-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.str-chat__attachment-preview-list .str-chat__attachment-preview-image .str-chat__attachment-preview-thumbnail {
+    object-fit: cover;
+    height: calc(var(--str-chat__spacing-px) * 72);
+    width: calc(var(--str-chat__spacing-px) * 72);
+    word-break: break-all;
+    overflow: hidden;
+}
+.str-chat__attachment-preview-list .str-chat__attachment-preview-file {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: calc(var(--str-chat__spacing-px) * 72);
+    width: calc(var(--str-chat__spacing-px) * 200);
+    position: relative;
+    padding: 0 var(--str-chat__spacing-4);
+    column-gap: var(--str-chat__spacing-2);
+}
+.str-chat__attachment-preview-list .str-chat__attachment-preview-file .str-chat__attachment-preview-file-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.str-chat__attachment-preview-list .str-chat__attachment-preview-file .str-chat__attachment-preview-file-icon svg {
+    height: calc(var(--str-chat__spacing-px) * 37);
+    width: unset;
+}
+.str-chat__attachment-preview-list .str-chat__attachment-preview-file .str-chat__attachment-preview-file-end {
+    overflow-y: visible;
+    overflow-x: hidden;
+    overflow-x: clip;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+.str-chat__attachment-preview-list .str-chat__attachment-preview-file .str-chat__attachment-preview-file-end .str-chat__attachment-preview-file-name {
+    white-space: nowrap;
+    overflow-y: visible;
+    overflow-x: hidden;
+    overflow-x: clip;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+.str-chat__attachment-preview-list .str-chat__attachment-preview-file .str-chat__attachment-preview-file-end .str-chat__attachment-preview-file-download {
+    line-height: calc(var(--str-chat__spacing-px) * 13);
+}
+.str-chat__attachment-preview-list .str-chat__attachment-preview-file .str-chat__attachment-preview-file-end .str-chat__attachment-preview-file-download svg {
+    width: calc(var(--str-chat__spacing-px) * 16);
+    height: calc(var(--str-chat__spacing-px) * 16);
+}
+.str-chat__attachment-preview-list button.str-chat__attachment-preview-delete {
+    padding: unset;
+    background: unset;
+    border: unset;
+    border-radius: var(--str-chat__border-radius-circle);
+    display: flex;
+}
+.str-chat__attachment-preview-list .str-chat__attachment-preview-delete {
+    position: absolute;
+    top: calc(var(--str-chat__spacing-px) * 2);
+    inset-inline-end: calc(var(--str-chat__spacing-px) * 2);
+    cursor: pointer;
+    z-index: 1;
+}
+.str-chat__attachment-preview-list .str-chat__attachment-preview-delete svg {
+    width: calc(var(--str-chat__spacing-px) * 24);
+    height: calc(var(--str-chat__spacing-px) * 24);
+}
+.str-chat__attachment-preview-list .str-chat__attachment-preview-error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: unset;
+    background: unset;
+    border: unset;
+    border-radius: unset;
+    cursor: pointer;
+}
+.str-chat__attachment-preview-list-angular-host {
+    width: 100%;
+    max-width: 100%;
+}

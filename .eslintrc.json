@@ -1,0 +1,10 @@
+{
+  "extends": "next/core-web-vitals",
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    // "indent": [
+    //   "error",
+    //   "tab"
+    // ]
+  }
+}

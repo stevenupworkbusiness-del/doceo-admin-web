@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "auth": {
+      "doceonew9d5671b29d5671b2": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

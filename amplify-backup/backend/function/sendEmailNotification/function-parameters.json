@@ -1,0 +1,38 @@
+{
+  "permissions": {
+    "analytics": {
+      "doceonew": [
+        "read",
+        "update",
+        "delete"
+      ]
+    },
+    "api": {
+      "doceonew": [
+        "Query",
+        "Mutation",
+        "Subscription"
+      ]
+    },
+    "auth": {
+      "doceonew9d5671b29d5671b2": [
+        "read"
+      ]
+    }
+  },
+  "lambdaLayers": [],
+  "environmentVariableList": [
+    {
+      "cloudFormationParameterName": "streamKey",
+      "environmentVariableName": "STREAM_KEY"
+    },
+    {
+      "cloudFormationParameterName": "streamSecret",
+      "environmentVariableName": "STREAM_SECRET"
+    },
+    {
+      "cloudFormationParameterName": "doctorApp",
+      "environmentVariableName": "DOCTOR_APP"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.fullsolution.doceo_new",
+      "sha256_cert_fingerprints": [
+        "6D:BA:C8:CA:30:84:66:41:26:78:16:ED:FD:C2:DC:08:8C:55:C8:DD:F8:E9:9E:0F:18:A3:17:8F:3C:0A:02:CA"
+      ]
+    },
+    "paths": ["/checkout/*"]
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.doceo_new",
+      "sha256_cert_fingerprints": [
+        "F8:D5:33:25:85:70:C4:CD:E0:70:AB:21:45:11:1D:07:63:D5:28:08:06:FF:1D:36:FD:6C:B3:0D:80:B4:68:E7"
+      ]
+    },
+    "paths": ["/checkout/*"]
+  }
+]

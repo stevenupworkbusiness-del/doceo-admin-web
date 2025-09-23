@@ -1,0 +1,43 @@
+{
+  "Records": [
+    {
+      "eventID": "87a70392e62b79b1278c991a0db4c7d3",
+      "eventName": "INSERT",
+      "eventVersion": "1.1",
+      "eventSource": "aws:dynamodb",
+      "awsRegion": "ap-northeast-1",
+      "dynamodb": {
+        "ApproximateCreationDateTime": 1698690748,
+        "Keys": {
+          "id": {
+            "S": "64efcd62-270e-4235-b1b9-e8f68afddf4e"
+          }
+        },
+        "NewImage": {
+          "createdAt": {
+            "S": "2023-10-30T18:32:28.452Z"
+          },
+          "tagId": {
+            "S": "448bed86-662d-4283-9235-e193d1dc1dbb"
+          },
+          "__typename": {
+            "S": "UserTag"
+          },
+          "id": {
+            "S": "64efcd62-270e-4235-b1b9-e8f68afddf4e"
+          },
+          "userId": {
+            "S": "f1bbc913-9122-4036-86ce-b04d7fb52d1e"
+          },
+          "updatedAt": {
+            "S": "2023-10-30T18:32:28.452Z"
+          }
+        },
+        "SequenceNumber": "270923000000000016861862305",
+        "SizeBytes": 242,
+        "StreamViewType": "NEW_AND_OLD_IMAGES"
+      },
+      "eventSourceARN": "arn:aws:dynamodb:ap-northeast-1:480663785201:table/UserTag-zbvvibhxdvc3hpdjr7rxl6a7za-dev/stream/2023-09-03T17:07:00.799"
+    }
+  ]
+}

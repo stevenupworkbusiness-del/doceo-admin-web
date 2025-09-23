@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "auth": {
+      "doceonew9d5671b29d5671b2": [
+        "read"
+      ]
+    }
+  },
+  "lambdaLayers": [],
+  "environmentVariableList": [
+    {
+      "cloudFormationParameterName": "streamKey",
+      "environmentVariableName": "STREAM_KEY"
+    },
+    {
+      "cloudFormationParameterName": "streamSecret",
+      "environmentVariableName": "STREAM_SECRET"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "permissions": {
+    "api": {
+      "doceonew": [
+        "Query",
+        "Mutation",
+        "Subscription"
+      ]
+    }
+  },
+  "lambdaLayers": [],
+  "environmentVariableList": [
+    {
+      "cloudFormationParameterName": "streamKey",
+      "environmentVariableName": "STREAM_KEY"
+    },
+    {
+      "cloudFormationParameterName": "streamSecret",
+      "environmentVariableName": "STREAM_SECRET"
+    },
+    {
+      "cloudFormationParameterName": "offset",
+      "environmentVariableName": "OFFSET"
+    },
+    {
+      "cloudFormationParameterName": "streamKey",
+      "environmentVariableName": "STREAM_KEY"
+    },
+    {
+      "cloudFormationParameterName": "streamSecret",
+      "environmentVariableName": "STREAM_SECRET"
+    },
+    {
+      "cloudFormationParameterName": "offset",
+      "environmentVariableName": "OFFSET"
+    }
+  ]
+}

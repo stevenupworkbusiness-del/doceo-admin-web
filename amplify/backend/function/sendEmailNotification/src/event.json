@@ -1,0 +1,224 @@
+{
+  "Records": [
+    {
+      "messageId": "078d4d43-a334-478b-9b24-e99113fdad96",
+      "receiptHandle": "AQEBAsWYmyqWczmPIccV8Uber6/CyJYIffHKdGyoZePmWLVCXUj0dn8eC9a/eIhGGpo+/Se8F0cW2xZ+8fmU6AhlCoZsVva8E4qRGuaYtjWaTl2Bt9dlSv83wg2dawXu/kUl1m6rT4KiAsID8qX9tPdU4XjEgKz/eRhiV16J7pKHoMao3k6KXfe8nXBXkr/NCRVm6q66nb5z3Gw01TPPV9vEdBbxqs7xtbx/bwpSqFo0yPMViOq9o7GV//ygA+YSwRB3GtwFiU4Gd8pcsfOKVsgnSZfrMp+3qnWpw0lXTi9Hnvm+VXNZDMXdgDtdz/D3uCOrYL+ArXURLGhXa+6pOcnQ4rHR+cVlGtDboze7oWH14AnmNj2qZpZl87JRboBFPGCv6EJ+teKJLmo9qOqNmp26tg==",
+      "body": {
+        "type": "channel.created",
+        "cid": "channel-3:f1bbc913-9122-4036-86ce-b04d7fb52d1e-1730784100174",
+        "channel_id": "f1bbc913-9122-4036-86ce-b04d7fb52d1e-1730784100174",
+        "channel_type": "channel-3",
+        "channel": {
+          "id": "f1bbc913-9122-4036-86ce-b04d7fb52d1e-1730784100174",
+          "type": "channel-3",
+          "cid": "channel-3:f1bbc913-9122-4036-86ce-b04d7fb52d1e-1730784100174",
+          "created_at": "2024-11-05T05:21:45.366332Z",
+          "updated_at": "2024-11-05T05:21:45.366332Z",
+          "created_by": {
+            "id": "f1bbc913-9122-4036-86ce-b04d7fb52d1e",
+            "role": "user",
+            "created_at": "2023-03-30T07:40:33.398827Z",
+            "updated_at": "2024-05-07T14:36:43.837465Z",
+            "last_active": "2024-11-05T05:13:02.113182967Z",
+            "banned": false,
+            "online": true,
+            "token": "",
+            "unread_threads": 0,
+            "intro": "Self 1",
+            "name": "Daniel Hong",
+            "birthday": "10/04/1995",
+            "unread_count": 0,
+            "image": "https://doceo-asset.s3.ap-northeast-1.amazonaws.com/user-icons/avatar_8.png",
+            "point": 7500,
+            "disable_room_notification": "no",
+            "feedCount": 22,
+            "sex": "男性",
+            "disable_notifciation": "yes"
+          },
+          "frozen": false,
+          "disabled": false,
+          "members": [
+            {
+              "user_id": "f1bbc913-9122-4036-86ce-b04d7fb52d1e",
+              "user": {
+                "id": "f1bbc913-9122-4036-86ce-b04d7fb52d1e",
+                "role": "user",
+                "created_at": "2023-03-30T07:40:33.398827Z",
+                "updated_at": "2024-05-07T14:36:43.837465Z",
+                "last_active": "2024-11-05T05:13:02.113182967Z",
+                "banned": false,
+                "online": true,
+                "unread_count": 0,
+                "intro": "Self 1",
+                "disable_room_notification": "no",
+                "birthday": "10/04/1995",
+                "feedCount": 22,
+                "token": "",
+                "disable_notifciation": "yes",
+                "point": 7500,
+                "sex": "男性",
+                "image": "https://doceo-asset.s3.ap-northeast-1.amazonaws.com/user-icons/avatar_8.png",
+                "unread_threads": 0,
+                "name": "Daniel Hong"
+              },
+              "status": "member",
+              "created_at": "2024-11-05T05:21:45.372159Z",
+              "updated_at": "2024-11-05T05:21:45.372159Z",
+              "banned": false,
+              "shadow_banned": false,
+              "role": "owner",
+              "channel_role": "channel_member",
+              "notifications_muted": false,
+              "Custom": null
+            }
+          ],
+          "member_count": 1,
+          "config": {
+            "created_at": "2023-02-13T05:27:38.41651Z",
+            "updated_at": "2024-08-12T12:03:05.63041Z",
+            "name": "channel-3",
+            "typing_events": false,
+            "read_events": true,
+            "connect_events": true,
+            "search": true,
+            "reactions": true,
+            "replies": true,
+            "quotes": false,
+            "mutes": true,
+            "uploads": true,
+            "url_enrichment": true,
+            "custom_events": true,
+            "push_notifications": true,
+            "reminders": false,
+            "mark_messages_pending": false,
+            "polls": false,
+            "message_retention": "infinite",
+            "max_message_length": 5000,
+            "automod": "disabled",
+            "automod_behavior": "flag",
+            "blocklist_behavior": "flag",
+            "skip_last_msg_update_for_system_msgs": false,
+            "commands": [
+              {
+                "name": "giphy",
+                "description": "Post a random gif to the channel",
+                "args": "[text]",
+                "set": "fun_set"
+              },
+              {
+                "name": "ban",
+                "description": "Ban a user",
+                "args": "[@username] [text]",
+                "set": "moderation_set"
+              },
+              {
+                "name": "unban",
+                "description": "Unban a user",
+                "args": "[@username]",
+                "set": "moderation_set"
+              },
+              {
+                "name": "mute",
+                "description": "Mute a user",
+                "args": "[@username]",
+                "set": "moderation_set"
+              },
+              {
+                "name": "unmute",
+                "description": "Unmute a user",
+                "args": "[@username]",
+                "set": "moderation_set"
+              }
+            ]
+          },
+          "tag": "",
+          "name": "LIVE",
+          "room": "47bef0bf-6e12-4f93-aad8-7b26967e9d05",
+          "owner": "f1bbc913-9122-4036-86ce-b04d7fb52d1e",
+          "endTime": "2024-11-06T05:00:00.000Z",
+          "startTime": "2024-11-06T08:21:00.000Z",
+          "description": "This is live"
+        },
+        "user": {
+          "id": "f1bbc913-9122-4036-86ce-b04d7fb52d1e",
+          "role": "user",
+          "created_at": "2023-03-30T07:40:33.398827Z",
+          "updated_at": "2024-05-07T14:36:43.837465Z",
+          "last_active": "2024-11-05T05:13:02.113182967Z",
+          "banned": false,
+          "online": true,
+          "disable_room_notification": "no",
+          "birthday": "10/04/1995",
+          "sex": "男性",
+          "token": "",
+          "disable_notifciation": "yes",
+          "name": "Daniel Hong",
+          "unread_count": 0,
+          "intro": "Self 1",
+          "image": "https://doceo-asset.s3.ap-northeast-1.amazonaws.com/user-icons/avatar_8.png",
+          "unread_threads": 0,
+          "point": 7500,
+          "feedCount": 22
+        },
+        "created_at": "2024-11-05T05:21:45.398922443Z",
+        "members": [
+          {
+            "user_id": "f1bbc913-9122-4036-86ce-b04d7fb52d1e",
+            "user": {
+              "id": "f1bbc913-9122-4036-86ce-b04d7fb52d1e",
+              "role": "user",
+              "created_at": "2023-03-30T07:40:33.398827Z",
+              "updated_at": "2024-05-07T14:36:43.837465Z",
+              "last_active": "2024-11-05T05:13:02.113182967Z",
+              "banned": false,
+              "online": true,
+              "unread_count": 0,
+              "sex": "男性",
+              "disable_room_notification": "no",
+              "total_unread_count": 0,
+              "channel_unread_count": 0,
+              "channel_last_read_at": "2024-11-05T05:21:45.387459584Z",
+              "disable_notifciation": "yes",
+              "name": "Daniel Hong",
+              "point": 7500,
+              "image": "https://doceo-asset.s3.ap-northeast-1.amazonaws.com/user-icons/avatar_8.png",
+              "feedCount": 22,
+              "birthday": "10/04/1995",
+              "intro": "Self 1",
+              "unread_channels": 0,
+              "unread_threads": 0,
+              "token": "",
+              "unread_thread_messages": 0
+            },
+            "status": "member",
+            "created_at": "2024-11-05T05:21:45.372159Z",
+            "updated_at": "2024-11-05T05:21:45.372159Z",
+            "banned": false,
+            "shadow_banned": false,
+            "role": "owner",
+            "channel_role": "channel_member",
+            "notifications_muted": false,
+            "Custom": null
+          }
+        ],
+        "request_info": {
+          "type": "client",
+          "ip": "104.223.97.2",
+          "user_agent": "Dart/2.19 (dart:io)",
+          "sdk": "stream-chat-dart-client-android-ui-6.0.0"
+        }
+      },
+      "attributes": {
+        "ApproximateReceiveCount": "1",
+        "SentTimestamp": "1730784105955",
+        "SenderId": "AIDAW72OLJ3Y5D5G235YD",
+        "ApproximateFirstReceiveTimestamp": "1730784105966"
+      },
+      "messageAttributes": {},
+      "md5OfBody": "14bcd6103c17dc0ef3cfa961366f2c0a",
+      "eventSource": "aws:sqs",
+      "eventSourceARN": "arn:aws:sqs:ap-northeast-1:480663785201:Doceo",
+      "awsRegion": "ap-northeast-1"
+    }
+  ]
+}
