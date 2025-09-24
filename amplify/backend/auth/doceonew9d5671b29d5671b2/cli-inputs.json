@@ -42,7 +42,11 @@
     ],
     "userPoolGroups": false,
     "adminQueries": false,
-    "triggers": {},
+    "triggers": {
+      "PostConfirmation": [
+        "addUserToGroup"
+        ]
+      },
     "hostedUI": true,
     "userPoolGroupList": [
       "Admins",
