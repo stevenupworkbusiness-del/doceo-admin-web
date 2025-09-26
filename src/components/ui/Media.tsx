@@ -1,46 +1,19 @@
-import Link from "next/link";
 import React, {
-  useCallback,
-  useEffect,
-  useMemo,
   useRef,
   useState,
 } from "react";
-import { Activity, type EnrichedUser } from "getstream";
+import { type EnrichedUser } from "getstream";
 import {
   type ActivityProps,
   type DefaultUT,
-  Gallery,
-  CommentField,
-  LikeButton,
-  CommentList,
-  ReactionToggleIcon,
-  useStreamContext,
   useFeedContext,
-  DefaultAT,
 } from "react-activity-feed";
 import {
   TbDots,
-  TbAlertTriangle,
-  TbMessages,
-  TbHeart,
-  TbCircleCheck,
-  TbChartBar,
-  TbThumbUp,
-  TbFile,
   TbCirclePlus,
 } from "react-icons/tb";
-import Image from "next/image";
-import { getAvatarText, getFormattedDate, getUserAge } from "@/utils";
 import { ActivityType } from "@/types";
-import Dropdown from "@/components/ui/Dropdown";
-import { useSelector } from "react-redux";
-import { selectTagsList } from "@/lib/store/tags";
-import { selectRoomList } from "@/lib/store/rooms";
 import axios from "axios";
-import moment from "moment";
-import { useAuth } from "@/lib/hooks/useAuth";
-import CommentsModal from "./modals/CommentsModal";
 import Medium from "./Medium";
 import MediumCreateModal from "./modals/MediumCreateModal";
 import { useClickAway } from "react-use";

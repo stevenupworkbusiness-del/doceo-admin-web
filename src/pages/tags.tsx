@@ -1,14 +1,10 @@
 import { API } from 'aws-amplify';
 import { GraphQLQuery } from '@aws-amplify/api';
 import React, { useEffect, useMemo, useState } from 'react';
-import { LoadingIndicator } from 'stream-chat-react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { TbArchive, TbDots, TbFiles, TbUser } from 'react-icons/tb';
-
-import Footer from '@/components/layout/Footer';
-import { DeleteTagMutation, ListTagsQuery, ListUserTagsQuery, Tag } from '@/types';
-import { listTags, listUserTags } from '@/graphql/queries';
+import { TbDots, TbFiles, TbUser } from 'react-icons/tb';
+import { DeleteTagMutation, ListTagsQuery, Tag } from '@/types';
+import { listTags } from '@/graphql/queries';
 import Dropdown from '@/components/ui/Dropdown';
 import TagCreateModal from '@/components/ui/modals/TagCreateModal';
 import Spinner from '@/components/ui/Spinner';

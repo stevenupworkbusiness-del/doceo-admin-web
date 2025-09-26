@@ -1,4 +1,4 @@
-import { FormEventHandler, useEffect, useMemo, useState } from "react";
+import { FormEventHandler, useEffect, useState } from "react";
 import axios from "axios";
 
 const BasicTermsModal: React.FC<{ onCloseModal: Function }> = ({

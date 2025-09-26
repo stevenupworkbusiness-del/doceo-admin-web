@@ -1,4 +1,4 @@
-import { Avatar, useChatContext } from 'stream-chat-react';
+import { useChatContext } from 'stream-chat-react';
 
 import { HashIcon } from '@/assets/icons';
 

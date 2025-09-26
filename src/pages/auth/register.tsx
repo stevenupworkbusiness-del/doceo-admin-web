@@ -129,7 +129,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx: any) => {
 				permanent: false
 			}
 		}
-	} catch {
+	} catch (err) {
+		console.log(err);
 	}
 
 	return {

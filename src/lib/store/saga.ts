@@ -1,13 +1,12 @@
-import { API, Auth } from 'aws-amplify';
-import { call, takeEvery, put, select, takeLatest, Effect, getContext, } from "redux-saga/effects";
-import { StreamChat, DefaultGenerics, Channel as StreamChatChannel } from 'stream-chat';
+import { API } from 'aws-amplify';
+import { call, takeEvery, put, takeLatest, Effect } from "redux-saga/effects";
 import axios from 'axios';
 import { CreateUserToken, listCategories, listTags, sendPushNotification } from '@/graphql/queries';
-import { Channel, CreateUserTokenQuery, CreateUserTokenResponse, ListCategoriesQuery, ListTagsQuery, } from '@/types';
+import { Channel, CreateUserTokenQuery, ListCategoriesQuery, ListTagsQuery, } from '@/types';
 
 import { CREATE_ANNOUNCEMENT, CREATE_TOKEN, CREATE_UPDATE_ROOM, GET_CATEGORIES, GET_TAGS } from "../constants/actions";
 import { PayloadWithType } from '.';
-import roomsSlice, { roomsActions } from './rooms';
+import { roomsActions } from './rooms';
 import { tagsActions } from './tags';
 import { categoriesActions } from './categories';
 

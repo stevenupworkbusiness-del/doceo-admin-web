@@ -1,13 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { Formik } from "formik";
-import { API, Storage } from "aws-amplify";
-import { GraphQLQuery } from "@aws-amplify/api";
-import { createTag } from "@/graphql/mutations";
-import { CreateTagMutation } from "@/types";
-import { useSelector } from "react-redux";
-import { selectOrderedCategoriesList } from "@/lib/store/categories";
-import axios from "axios";
-import { useAuth } from "@/lib/hooks/useAuth";
+import { Storage } from "aws-amplify";
 import { useFeedContext } from "react-activity-feed";
 import { resizeImage } from "@/utils";
 import Image from "next/image";
@@ -18,7 +11,6 @@ type Props = {
 };
 
 const MediumCreateModal: React.FC<Props> = ({ activity, onHideModal }) => {
-  const user = useAuth();
   const { feedManager } = useFeedContext();
   const [attachment, setAttachment] = useState<File>();
   const preview = useMemo(() => {

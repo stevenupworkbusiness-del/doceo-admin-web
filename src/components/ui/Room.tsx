@@ -1,19 +1,15 @@
-import React, { MouseEventHandler, useEffect, useMemo, useState } from 'react';
+import React, { MouseEventHandler, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useDispatch } from 'react-redux';
-import { MdOutlineComment, MdOutlineEdit, MdOutlineDelete } from 'react-icons/md';
+import { MdOutlineEdit, MdOutlineDelete } from 'react-icons/md';
 import { ChannelDetail } from '@/types';
 import { getAvatarText } from '@/utils';
 import { roomsActions } from '@/lib/store/rooms';
 import { useChatClient } from '@/lib/getstream/context';
 import { TbFiles, TbUser } from 'react-icons/tb';
-import { Channel, ChannelMemberResponse } from 'stream-chat';
+import { ChannelMemberResponse } from 'stream-chat';
 import { Member } from '@/models';
-import { Auth, API } from 'aws-amplify';
-import { GraphQLResult } from '@aws-amplify/api';
-import { StreamChat } from 'stream-chat';
-import { CreateUserToken } from '@/graphql/queries';
 
 type RoomProps = {
 	room: ChannelDetail
@@ -22,26 +18,8 @@ type RoomProps = {
 const Room: React.FC<RoomProps> = ({ room }) => {
 	const dispatch = useDispatch();
 	const chatClient = useChatClient()?.client;
-	const [channel, setChannel] = useState<Channel>();
 	const [feedsCount, setFeedsCount] = useState<number | undefined>();
-	const [membersCount, setMembersCount] = useState<number | undefined>();
 	const [doctors, setDoctors] = useState<ChannelMemberResponse[] | (Member | null)[]>(room.members.filter((member) => member?.user?.role === 'doctor'));
-	const [recordingSettings, setRecordingSettings] = useState({
-		showRecordButton: true,
-		interface: "vas",
-		dailyLimit: 1,
-		sprintLimit: 0,
-		showSprintGraph: false,
-		maxEffectValue: 5,
-		minText: "",
-		maxText: "",
-		recordingHintText: "",
-		sprintHintText: "",
-		sprintGuidelines: "",
-		guidanceVideo: "",
-		guidanceAgreement: "",
-	});
-	const [settingsLoading, setSettingsLoading] = useState(true);
 
 	// useEffect(() => {
 	// 	const fetchRecordingSettings = async () => {

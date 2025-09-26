@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Formik } from 'formik';
 import { API } from 'aws-amplify';
 import { GraphQLQuery } from '@aws-amplify/api';
-import { createCategory, deleteCategory, updateCategory, updateCategoryOrder } from '@/graphql/mutations';
-import { CreateCategoryMutation, DeleteCategoryMutation, UpdateCategoryOrderMutation } from '@/types';
-import { useSelector } from 'react-redux';
-import { categoriesActions, selectOrderedCategoriesList } from '@/lib/store/categories';
+import { deleteCategory, updateCategoryOrder } from '@/graphql/mutations';
+import { DeleteCategoryMutation, UpdateCategoryOrderMutation } from '@/types';
+import { categoriesActions } from '@/lib/store/categories';
 import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
-import { TbCheck, TbCircleCheck, TbDots, TbX } from 'react-icons/tb';
+import { TbCircleCheck, TbDots } from 'react-icons/tb';
 import { Category } from '@/models';
 import Dropdown from '../Dropdown';
 import { useDispatch } from 'react-redux';
-import { Router, useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import CategoryEditModal from './CategoryEditModal';
 
 type Props = {
@@ -22,11 +20,9 @@ type Props = {
 }
 
 const CategoriesFilterModal: React.FC<Props> = ({ categories, selectedCat, showModal, onHideModal }) => {
-	// const categories = useSelector(selectOrderedCategoriesList);
 	const [selectedOne, setSelecteOne] = useState(selectedCat);
 	const [catList, setCatList] = useState(categories);
 	const [edit, setEdit] = useState('');
-	const [updateName, setUpdateName] = useState('');
 	const dispatch = useDispatch();
 	const router = useRouter();
 

@@ -1,13 +1,8 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "react-modal";
-import { ErrorMessage, Field, FieldArray, Formik, useFormik } from "formik";
+import { useFormik } from "formik";
 import { listHospitals } from "@/graphql/queries";
-import { useChatClient } from "@/lib/getstream/context";
-import Spinner from "@/components/ui/Spinner";
-import Image from "next/image";
-import { Auth, Storage, API } from "aws-amplify";
-import { BsTrash } from "react-icons/bs";
-import { useAuth } from "@/lib/hooks/useAuth";
+import { API } from "aws-amplify";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { LoadingIndicator } from "stream-chat-react";
 import { TbTrash, TbEdit } from "react-icons/tb";

@@ -1,14 +1,13 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useAuth } from '@/lib/hooks/useAuth';
 import { selectUserToken } from '../../lib/store/rooms';
 import NumberTile from '@/components/dashboard/NumberTile/NumberTile';
-import { StreamChat, DefaultGenerics, ExtendableGenerics, Channel, MessageResponse } from 'stream-chat';
-import { Chat } from 'stream-chat-react';
-import { MessageChannel } from 'worker_threads';
-import { forEach } from 'lodash';
+import { StreamChat, DefaultGenerics, Channel } from 'stream-chat';
+import { sumUpMessages } from '@/utils';
+import { Messages } from '@/types';
 
 /**
  * A hook which handles the process of connecting/disconnecting a user
@@ -22,7 +21,7 @@ const width = typeof window !== "undefined" ? window.innerWidth : 1200;
 const height = typeof window !== "undefined" ? window.innerHeight : 900;
 
 interface Styles {
-  container: React.CSSProperties;
+	container: React.CSSProperties;
 	filterContainer: React.CSSProperties;
 	filterButton: React.CSSProperties;
 	roomSelectMenu: React.CSSProperties;
@@ -90,22 +89,6 @@ const styles: Styles = {
 	personalConsultAnalysisContainer: {
 		width: '85%',
 	},
-}
-
-const sumUpMessages = (messages: Messages) => {
-	let numOfMessages: number = 0;
-	if (messages) {
-		const keys = Object.keys(messages);
-		keys.forEach(value => {
-			numOfMessages += messages[value].length
-		});
-	}
-	return messages !== null ? numOfMessages : 0;
-}
-
-
-interface Messages {
-	[key: string]: MessageResponse<DefaultGenerics>[];
 }
 
 const Dashboard = () => {

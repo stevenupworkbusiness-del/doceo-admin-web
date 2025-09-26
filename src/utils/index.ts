@@ -1,5 +1,9 @@
 import { v4 as uuidv4 } from "uuid";
 import moment from "moment";
+import { CreateUserToken } from '@/graphql/queries';
+import { API, Auth } from 'aws-amplify';
+import { ICognitoUser, Messages, TeamChatGenerics } from "@/types";
+import { Channel, ChannelResponse, StreamChat } from "stream-chat";
 
 export function getAvatarText(username: string | undefined) {
   return username
@@ -80,3 +84,121 @@ export function resizeImage(
     img.src = URL.createObjectURL(file);
   });
 }
+
+export const getToken = (id: string, name: string) => {
+  return API.graphql({
+    query: CreateUserToken,
+    variables: {
+      id: id,
+      name: name,
+      apiKey: process.env.NEXT_PUBLIC_STREAM_KEY,
+      apiSecret: 'Secret Key'
+    }
+  });
+};
+
+export const sumUpMessages = (messages: Messages) => {
+  let numOfMessages: number = 0;
+  if (messages) {
+    const keys = Object.keys(messages);
+    keys.forEach(value => {
+      numOfMessages += messages[value].length
+    });
+  }
+  return messages !== null ? numOfMessages : 0;
+}
+
+export const normalizeUrl = (url: string): string => {
+  if (url && !/^https?:\/\//i.test(url)) {
+    return `${window.location.origin}${url.startsWith("/") ? "" : "/"}${url}`;
+  }
+  return url;
+};
+
+export const handleFileUpload = async (file: File, setVideoUrl: React.Dispatch<React.SetStateAction<string>>, setFileType: React.Dispatch<React.SetStateAction<"image" | "video">>) => {
+  try {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const response = await fetch("/api/upload", {
+      method: "POST",
+      body: formData,
+    });
+
+    if (!response.ok) throw new Error("Upload failed");
+
+    const data = await response.json();
+    console.log("data: ", data);
+
+    let url = normalizeUrl(data.url);
+
+    setVideoUrl(url);
+    setFileType(file.type.startsWith("image/") ? "image" : "video");
+    return url;
+  } catch (error) {
+    console.error("Error uploading file:", error);
+    alert("Failed to upload file");
+  }
+};
+
+export const getCurrentUserId = async (currentUser: ICognitoUser, chatClient: StreamChat<TeamChatGenerics>): Promise<string> => {
+  let userId = currentUser?.id;
+  
+  if (!userId) {
+    userId = chatClient?._user?.id;
+  }
+  
+  if (!userId) {
+    userId = localStorage.getItem("userId");
+  }
+  
+  if (!userId) {
+    try {
+      const currentUser = await Auth.currentAuthenticatedUser();
+      userId = currentUser.username || currentUser.attributes?.sub;
+    } catch (error) {
+      console.log("Error getting authenticated user:", error);
+    }
+  }
+  
+  if (!userId) {
+    throw new Error("User ID not found. Please ensure you are logged in.");
+  }
+  
+  return userId;
+};
+
+export const createRecordingSettingsChannel = async (chatClient: StreamChat<TeamChatGenerics>, roomId: string) => {
+  const channel = chatClient.channel("recording_settings", roomId);
+  await channel.watch();
+  return channel;
+};
+
+export const updateChannelWithEvent = async (chatClient: StreamChat<TeamChatGenerics>, channel: Channel<TeamChatGenerics>, channelData: any) => {
+  await channel.update(channelData, { text: "Channel Updated" });
+  await channel.query({ state: true });
+  chatClient.dispatchEvent({
+    type: "channel.updated",
+    channel_type: "recording_settings",
+    channel_id: channel.id,
+    channel: channel.data as ChannelResponse<TeamChatGenerics>,
+    message: {
+      id: `settings-update-${Date.now()}`,
+      text: "Settings updated",
+      user_id: chatClient.userID || "",
+      created_at: new Date().toISOString(),
+      type: "regular",
+    },
+  });
+};
+
+export const errorHandler = (error: unknown, context: string) => {
+  const message = error instanceof Error ? error.message : "An unknown error occurred";
+  console.error(`Error in ${context}:`, error);
+  return message;
+};
+
+export const preventDefaultAndStopPropagation = (e: React.SyntheticEvent) => {
+  e.preventDefault();
+  e.stopPropagation();
+};

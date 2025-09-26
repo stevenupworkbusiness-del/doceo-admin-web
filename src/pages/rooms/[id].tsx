@@ -1,17 +1,13 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useSearchParams, useSelectedLayoutSegment } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/router";
 import editIcon from "@/assets/icons/editIcon.png";
-import { NextPage } from "next";
 import {
-  LiteralStringForUnion,
-  StreamChat,
   ChannelFilters,
   ChannelSort,
   UserResponse,
-  ExtendableGenerics,
   UserFilters,
   MemberSort,
 } from "stream-chat";
@@ -20,14 +16,12 @@ import { Modal, Button } from "react-bootstrap";
 import Spinner from "@/components/ui/Spinner";
 import Footer from "@/components/layout/Footer";
 import { ChannelDetail, TeamChatGenerics, ActivityType } from "@/types";
-// import { useChatClient } from '@/lib/getstream/context';
 import { ChannelListContainer } from "@/components/channel/ChannelListContainer/ChannelListContainer";
 import { ChannelContainer } from "@/components/channel/ChannelContainer/ChannelContainer";
-import { useConnectUser } from "@/lib/getstream/useConnectUser";
-import { GetstreamState, useChatClient } from "@/lib/getstream/context";
+import { useChatClient } from "@/lib/getstream/context";
 import { useSelector } from "react-redux";
 import { selectSpecificRoom } from "@/lib/store/rooms";
-import { TbCheck, TbCirclePlus, TbPlus, TbTrash } from "react-icons/tb";
+import { TbCheck, TbCirclePlus, TbTrash } from "react-icons/tb";
 import { useClickAway } from "react-use";
 import axios from "axios";
 import { useAuth } from "@/lib/hooks/useAuth";
@@ -39,7 +33,6 @@ import {
   LoadMorePaginator,
 } from "react-activity-feed";
 import { LoadingIndicator as DefaultLoadingIndicator } from "react-file-utils";
-import Post from "@/components/ui/Post";
 import Media from "@/components/ui/Media";
 import { EnrichedActivity, EnrichedUser, ReactionAPIResponse } from "getstream";
 import FormModal from "@/models/FormModal";
@@ -408,69 +401,6 @@ const SingleRoom = () => {
   const [showEditForm, setShowEditForm] = useState(false);
   const [value, setValue] = useState<string | undefined>(undefined);
   const [refreshing, setRefreshing] = useState(false);
-
-  // const onSubmit = async () => {
-  //   try {
-  //     if (!chatClient) {
-  //       throw new Error("Chat client not initialized");
-  //     }
-
-  //     const channelData = {
-  //       showRecordButton: false,
-  //     };
-
-  //     const newChannel = chatClient.channel("recording_settings", channelData);
-  //     console.log("Creating new channel with data:", channelData);
-
-  //     const {
-  //       showRecordButton,
-  //       interface: interfaceUsed,
-  //       dailyLimit,
-  //       sprintLimit,
-  //       showSprintGraph,
-  //       maxEffectValue,
-  //       minText,
-  //       maxText,
-  //       recordingHintText,
-  //       sprintHintText,
-  //       sprintGuidelines,
-  //       guidanceVideo,
-  //       guidanceAgreement,
-  //     } = channelData.data;
-
-  //     console.log("Channel Data.data : ", {
-  //       showRecordButton,
-  //       interface: interfaceUsed,
-  //       dailyLimit,
-  //       sprintLimit,
-  //       showSprintGraph,
-  //       maxEffectValue,
-  //       minText,
-  //       maxText,
-  //       recordingHintText,
-  //       sprintHintText,
-  //       sprintGuidelines,
-  //       guidanceVideo,
-  //       guidanceAgreement,
-  //     });
-
-  //     await newChannel.watch();
-
-  //     await newChannel.updatePartial({
-  //       set: channelData,
-  //     });
-
-  //     console.log("Channel recording Off successfully!", newChannel);
-  //     return newChannel;
-  //   } catch (error) {
-  //     console.error("Error in form submission:", error);
-  //     alert(
-  //       error instanceof Error
-  //         ? error.message
-  //         : "An error occurred during submission"
-  //     );
-  //   }
-  // };
 
   const onSubmitOff = async () => {
     try {

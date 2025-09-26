@@ -1,17 +1,13 @@
-import React, { KeyboardEventHandler, useEffect, useMemo, useRef, useState } from 'react';
-import { Formik, useFormik } from 'formik';
-import { API, Storage } from 'aws-amplify';
-import { GraphQLQuery } from '@aws-amplify/api';
-import { createTag } from '@/graphql/mutations';
-import { CreateTagMutation } from '@/types';
+import React, { KeyboardEventHandler, useMemo, useRef, useState } from 'react';
+import { useFormik } from 'formik';
+import { Storage } from 'aws-amplify';
 import { useSelector } from 'react-redux';
-import { selectOrderedCategoriesList } from '@/lib/store/categories';
 import { selectRoomList } from '@/lib/store/rooms';
 import Image from 'next/image';
 import axios from 'axios';
 import { useAuth } from '@/lib/hooks/useAuth';
 import { TbX } from 'react-icons/tb';
-import { resizeImage } from '@/utils';
+import { preventDefaultAndStopPropagation, resizeImage } from '@/utils';
 
 type Props = {
 	onHideModal: Function
@@ -79,8 +75,7 @@ const PostCreateModal: React.FC<Props> = ({ onHideModal }) => {
 
 	const enterChoice: KeyboardEventHandler<HTMLInputElement> = (e) => {
 		if (e.key === 'Enter') {
-			e.preventDefault();
-			e.stopPropagation();
+			preventDefaultAndStopPropagation(e);
 
 			formik.setFieldValue('choices', [
 				...formik.values.choices,

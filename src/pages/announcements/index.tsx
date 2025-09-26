@@ -1,16 +1,9 @@
-import { API, Auth } from 'aws-amplify';
 import Footer from '@/components/layout/Footer';
 import AnnouncementModal from '@/components/ui/modals/AnnouncementModal';
-import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import { listNotifications } from '@/graphql/queries';
-import { ListNotificationsQuery, TeamChatGenerics } from '@/types';
-import { GraphQLQuery } from '@aws-amplify/api';
-import Spinner from '@/components/ui/Spinner';
-import { useDispatch } from 'react-redux';
-import { CREATE_ANNOUNCEMENT } from '@/lib/constants/actions';
-import { Chat, Channel, MessageList, useMessageContext, MessageUIComponentProps, Attachment, MessageText } from 'stream-chat-react';
+import { TeamChatGenerics } from '@/types';
+import { Chat, Channel, MessageList, useMessageContext, MessageUIComponentProps, Attachment } from 'stream-chat-react';
 import { useChatClient } from '@/lib/getstream/context';
 import { getFormattedDate } from '@/utils';
 import { TbTrash } from 'react-icons/tb';

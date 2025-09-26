@@ -1,18 +1,16 @@
-import Link from 'next/link';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Activity, type EnrichedUser } from 'getstream';
-import { type ActivityProps, type DefaultUT, Gallery, CommentField, LikeButton, CommentList, ReactionToggleIcon, useStreamContext, useFeedContext, DefaultAT } from 'react-activity-feed';
-import { TbDots, TbAlertTriangle, TbMessages, TbHeart, TbCircleCheck, TbChartBar, TbThumbUp, TbFile } from 'react-icons/tb';
+
+import React, { useCallback, useMemo, useState } from 'react';
+import { type EnrichedUser } from 'getstream';
+import { type ActivityProps, type DefaultUT, Gallery, LikeButton, useFeedContext, } from 'react-activity-feed';
+import { TbDots, TbMessages, TbChartBar, TbFile } from 'react-icons/tb';
 import Image from 'next/image';
-import { getAvatarText, getFormattedDate, getUserAge } from '@/utils';
+import { getAvatarText, getFormattedDate } from '@/utils';
 import { ActivityType } from '@/types'
-import Dropdown from '@/components/ui/Dropdown';
 import { useSelector } from 'react-redux';
 import { selectTagsList } from '@/lib/store/tags';
 import { selectRoomList } from '@/lib/store/rooms';
 import axios from 'axios';
 import moment from 'moment';
-import { useAuth } from '@/lib/hooks/useAuth';
 import CommentsModal from './modals/CommentsModal';
 
 const Post: React.FC<ActivityProps<DefaultUT, ActivityType>> = ({ activity, feedGroup, userId, ...props }) => {
@@ -40,19 +38,6 @@ const Post: React.FC<ActivityProps<DefaultUT, ActivityType>> = ({ activity, feed
 	const getTagName = (id: string) => {
 		const tag = tags.find(tag => tag.id === id);
 		return tag ? tag.name : ''
-	}
-
-	const getReasonText = (reason: string) => {
-		switch (reason) {
-			case 'follow-up':
-				return '経過観察';
-			case 'report-symptom':
-				return '症状の報告';
-			case 'regular-checkup':
-				return '定期健診';
-			default:
-				return 'その他';
-		}
 	}
 
 	const room = useMemo(() => {

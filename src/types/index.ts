@@ -1,8 +1,7 @@
 import {
   LiteralStringForUnion,
-  StreamChat,
-  ChannelFilters,
-  ChannelSort,
+  MessageResponse,
+  DefaultGenerics,
 } from "stream-chat";
 import type { DefaultAT } from "react-activity-feed";
 
@@ -76,3 +75,7 @@ export type ActivityType = DefaultAT & {
   choices: string;
   period: string;
 };
+
+export interface Messages {
+  [key: string]: MessageResponse<DefaultGenerics>[];
+}

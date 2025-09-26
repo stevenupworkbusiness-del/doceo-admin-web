@@ -3,10 +3,9 @@ import {
   StreamChat,
   DefaultGenerics,
   ChannelData,
-  ChannelResponse,
 } from "stream-chat";
 import { CreateUserToken } from "@/graphql/queries";
-import { Auth, withSSRContext, API } from "aws-amplify";
+import { Auth, API } from "aws-amplify";
 import { GraphQLResult } from "@aws-amplify/api-graphql";
 import Spinner from "../ui/Spinner";
 
@@ -41,7 +40,6 @@ const StreamIntegrationTable: React.FC<StreamIntegrationTableProps> = ({
 
   const [userProgressData, setUserProgressData] = useState<UserProgress[]>([]);
   console.log("selectedRoomId: ", selectedRoomId);
-  const [channelData, setChannelData] = useState<any>(null); // State to hold fetched channel data
 
   // Function to fetch the recording settings data
   const fetchRecordingSettings = async () => {
@@ -186,8 +184,6 @@ const StreamIntegrationTable: React.FC<StreamIntegrationTableProps> = ({
         setRefreshing(false);
         setInterface2(recordingSettings.data.interface);
       }
-
-      setChannelData(recordingChannel.data);
       console.log("Channel data set:", !!recordingChannel.data);
     } catch (error) {
       console.error("Detailed error in fetchRecordingSettings:", {
@@ -252,7 +248,6 @@ const StreamIntegrationTable: React.FC<StreamIntegrationTableProps> = ({
         </table>
         <div>
           {/* <h3>Recording Settings:</h3> */}
-          {/* <pre>{JSON.stringify(channelData, null, 2)}</pre> Show the channel data */}
         </div>
       </div>
     </div>

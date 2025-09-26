@@ -3,9 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { API, Auth } from 'aws-amplify';
 import Link from 'next/link';
 import Image from 'next/image';
-import { selectRoomList, selectUserToken } from '@/lib/store/rooms';
+import { selectRoomList } from '@/lib/store/rooms';
 import Room from '@/components/ui/Room';
-import { useConnectUser } from '@/lib/getstream/useConnectUser';
 import RoomInfoModal from '@/components/ui/modals/RoomInfoModal';
 import { roomsActions } from '@/lib/store/rooms';
 import Footer from '@/components/layout/Footer'
@@ -126,11 +125,6 @@ const Rooms = () => {
 		}
 		return list;
 	}, [router, list]);
-
-	const [page, setPage] = useState(1);
-	const pageSize = 6;
-	const totalPages = Math.ceil(filteredRooms.length / pageSize);
-	const paginatedRooms = filteredRooms.slice((page - 1) * pageSize, page * pageSize);
 
 	const onCreateNewRoom = () => {
 		dispatch(roomsActions.selectRoom(null));

@@ -2,7 +2,7 @@ import React, { MouseEventHandler } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { Auth, withSSRContext, API } from 'aws-amplify';
+import { Auth, withSSRContext } from 'aws-amplify';
 import { Formik } from 'formik';
 import { useRouter } from 'next/router';
 import { GetServerSideProps } from 'next';

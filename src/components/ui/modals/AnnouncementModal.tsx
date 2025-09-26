@@ -1,12 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { Formik } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';;
-import { CREATE_ANNOUNCEMENT } from '@/lib/constants/actions';
-import { selectRoomList } from '@/lib/store/rooms';
-import { API, Storage } from 'aws-amplify';
-import { GraphQLQuery } from '@aws-amplify/api';
-import { CreateNotificationMutation } from '@/types';
-import { createNotification } from '@/graphql/mutations';
+import { Storage } from 'aws-amplify';
 import { useChatClient } from '@/lib/getstream/context';
 import Image from 'next/image';
 import { resizeImage } from '@/utils';
@@ -17,8 +11,6 @@ type props = {
 }
 
 const AnnouncementModal: React.FC<props> = ({ showModal = false, onHideModal }) => {
-	const list = useSelector(selectRoomList);
-	const dispatch = useDispatch();
 	const chatClient = useChatClient()?.client;
 	const [attachment, setAttachment] = useState<File>();
 	const preview = useMemo(() => {
@@ -50,14 +42,7 @@ const AnnouncementModal: React.FC<props> = ({ showModal = false, onHideModal }) 
 
 			onHideModal();
 
-			// dispatch({
-			// 	type: CREATE_ANNOUNCEMENT,
-			// 	payload: {
-			// 		type: data.type,
-			// 		channel: data.channel,
-			// 		text: data.content
-			// 	}
-			// });
+
 		} catch (e) {
 			console.error(e);
 		}

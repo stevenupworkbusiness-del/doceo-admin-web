@@ -1,20 +1,9 @@
-import React, { useMemo, useState } from 'react';
-import { Formik } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';;
-import { CREATE_ANNOUNCEMENT } from '@/lib/constants/actions';
-import { selectRoomList } from '@/lib/store/rooms';
-import { API, Storage } from 'aws-amplify';
-import { GraphQLQuery } from '@aws-amplify/api';
-import { ActivityType, CreateNotificationMutation } from '@/types';
-import { createNotification } from '@/graphql/mutations';
-import { useChatClient } from '@/lib/getstream/context';
+import React from 'react';
 import Image from 'next/image';
-import { CommentField, CommentList, DefaultUT, Gallery, LikeButton, useFeedContext } from 'react-activity-feed';
-import { EnrichedActivity, EnrichedUser, UR } from 'getstream';
+import { CommentField, CommentList, useFeedContext } from 'react-activity-feed';
+import { EnrichedActivity } from 'getstream';
 import { getAvatarText, getFormattedDate } from '@/utils';
-import { TbChartBar, TbCircleCheck, TbDots, TbMessages } from 'react-icons/tb';
-import moment from 'moment';
-import { useAuth } from '@/lib/hooks/useAuth';
+import { TbDots } from 'react-icons/tb';
 
 type props = {
 	activity: EnrichedActivity,
@@ -22,7 +11,6 @@ type props = {
 }
 
 const CommentsModal: React.FC<props> = ({ activity, onHideModal }) => {
-	const currentUser = useAuth();
 	const { feedManager } = useFeedContext();
 
 	const hideModal = () => {
