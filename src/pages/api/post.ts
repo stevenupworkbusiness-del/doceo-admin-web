@@ -34,7 +34,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 			foreign_id: `${user_id}:${type}:${Date.now()}`,
 			object: `admin:${type}:id`,
 			room,
-			// time: new Date().toISOString(),
 			to: targets,
 			message: text,
 			filePath: attachment,

@@ -1,16 +1,11 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { useSearchParams, useSelectedLayoutSegment } from "next/navigation";
+import { useSearchParams} from "next/navigation";
 import { useRouter } from "next/router";
-import { NextPage } from "next";
 import {
-  LiteralStringForUnion,
-  StreamChat,
   ChannelFilters,
   ChannelSort,
   UserResponse,
-  ExtendableGenerics,
   UserFilters,
   MemberSort,
 } from "stream-chat";
@@ -22,11 +17,10 @@ import { ChannelDetail, TeamChatGenerics, ActivityType } from "@/types";
 // import { useChatClient } from '@/lib/getstream/context';
 import { ChannelListContainer } from "@/components/channel/ChannelListContainer/ChannelListContainer";
 import { ChannelContainer } from "@/components/channel/ChannelContainer/ChannelContainer";
-import { useConnectUser } from "@/lib/getstream/useConnectUser";
-import { GetstreamState, useChatClient } from "@/lib/getstream/context";
+import { useChatClient } from "@/lib/getstream/context";
 import { useSelector } from "react-redux";
 import { selectSpecificRoom } from "@/lib/store/rooms";
-import { TbCheck, TbCirclePlus, TbPlus, TbTrash } from "react-icons/tb";
+import { TbCheck, TbCirclePlus, TbTrash } from "react-icons/tb";
 import { useClickAway } from "react-use";
 import axios from "axios";
 import { useAuth } from "@/lib/hooks/useAuth";
@@ -38,7 +32,6 @@ import {
   LoadMorePaginator,
 } from "react-activity-feed";
 import { LoadingIndicator as DefaultLoadingIndicator } from "react-file-utils";
-import Post from "@/components/ui/Post";
 import Media from "@/components/ui/Media";
 import { EnrichedActivity, EnrichedUser, ReactionAPIResponse } from "getstream";
 

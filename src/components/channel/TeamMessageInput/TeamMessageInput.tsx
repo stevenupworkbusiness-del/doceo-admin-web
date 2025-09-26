@@ -5,9 +5,7 @@ import {
 	ChatAutoComplete,
 	EmojiPicker,
 	MessageInputProps,
-	UploadsPreview,
 	useChannelStateContext,
-	useChatContext,
 	useMessageInputContext,
 } from 'stream-chat-react';
 
@@ -43,8 +41,6 @@ export const TeamMessageInput: React.FC<Props> = (props) => {
 		multipleUploads,
 		thread,
 	} = useChannelStateContext<TeamChatGenerics>();
-
-	const { client } = useChatContext<TeamChatGenerics>();
 
 	const [boldState, setBoldState] = useState(false);
 	const [codeState, setCodeState] = useState(false);
@@ -192,7 +188,6 @@ export const TeamMessageInput: React.FC<Props> = (props) => {
 					<div className='team-message-input__top'>
 						{giphyState && !messageInput.numberOfUploads && <GiphyIcon />}
 						<AttachmentPreviewList />
-						{/* <UploadsPreview /> */}
 						<div className="team-message-input__form">
 							<ChatAutoComplete onChange={onChange} placeholder={`Message ${getPlaceholder()}`} />
 							<div

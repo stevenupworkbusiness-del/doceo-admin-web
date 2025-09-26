@@ -7,7 +7,6 @@ import path from 'path';
 import fs from 'fs';
 import Express, { Request } from 'express';
 
-type CustomRequest = Request & NextApiRequest;
 
 // Ensure upload directory exists
 const uploadDir = './public/uploads';
@@ -15,16 +14,7 @@ if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir, { recursive: true });
 }
 
-interface MulterFile {
-    fieldname: string;
-    originalname: string;
-    encoding: string;
-    mimetype: string;
-    destination: string;
-    filename: string;
-    path: string;
-    size: number;
-}
+
 
 // Configure multer storage
 const storage = multer.diskStorage({

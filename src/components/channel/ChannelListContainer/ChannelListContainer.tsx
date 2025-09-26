@@ -41,7 +41,7 @@ const customChannelTeamFilter = (channels: Channel[], type: string) => {
 };
 
 export const ChannelListContainer: React.FC<Props> = (props) => {
-	const {  isCreating, filters, options, setCreateType, setIsCreating, setIsEditing, sort, roomName } = props;
+	const { filters, options, setCreateType, setIsCreating, setIsEditing, sort, roomName } = props;
 
 	return (
 		<div className='channel-list__container'>

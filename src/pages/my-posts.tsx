@@ -1,6 +1,5 @@
 import Footer from "@/components/layout/Footer";
-import { selectFeedToken, selectRoomList } from "@/lib/store/rooms";
-import Image from "next/image";
+import { selectRoomList } from "@/lib/store/rooms";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import "react-activity-feed/dist/index.css";
@@ -8,10 +7,8 @@ import { useSelector } from "react-redux";
 import {
   StreamApp,
   FlatFeed,
-  StatusUpdateForm,
   DefaultUT,
   LoadMorePaginator,
-  InfiniteScrollPaginator,
 } from "react-activity-feed";
 import { LoadingIndicator as DefaultLoadingIndicator } from "react-file-utils";
 import axios from "axios";
@@ -23,7 +20,6 @@ import {
   EnrichedActivity,
   EnrichedUser,
   ReactionAPIResponse,
-  UR,
 } from "getstream";
 import { selectTagsList } from "@/lib/store/tags";
 import PostCreateModal from "@/components/ui/modals/PostCreateModal";
@@ -139,8 +135,6 @@ const Posts = () => {
   };
 
   const onDeleteReactionRequest = async (id: string) => {
-    console.log("Here delete");
-
     return axios
       .post<any, { data: ReactionAPIResponse }>("/api/reaction-delete", {
         id: id,

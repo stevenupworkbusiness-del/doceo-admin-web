@@ -1,6 +1,5 @@
 import { StreamChat } from "stream-chat";
 import type { NextApiRequest, NextApiResponse } from "next";
-// import Stripe from "stripe";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const client = new StreamChat(
@@ -9,15 +8,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   );
   const { type, id, mode, clearImage, user_id, ...data } = req.body;
   try {
-    // if (data["image"]) {
-    //   try {
-    //     await stripe.products.retrieve(id);
-    //     await stripe.products.update(id, {
-    //       images: clearImage ? [] : [data["image"]],
-    //     });
-    //   } catch (e) {}
-    // }
-
     if (mode == "new") {
       const channel = client.channel(type, id, data);
       const response = await channel.create();

@@ -17,7 +17,7 @@ import {
   Questionnaire,
   UpdateQuestionnaireMutation,
 } from "@/types";
-import { getRandomId, resizeImage } from "@/utils";
+import { getRandomId, preventDefaultAndStopPropagation, resizeImage } from "@/utils";
 import { selectTagsList } from "@/lib/store/tags";
 import { API } from "aws-amplify";
 import { GraphQLQuery } from "@aws-amplify/api";
@@ -256,8 +256,7 @@ const RoomInfoModal = () => {
     e
   ) => {
     if (e.code === "Enter" || e.code === "NumpadEnter") {
-      e.preventDefault();
-      e.stopPropagation();
+      preventDefaultAndStopPropagation(e);
 
       try {
         const { data } = await API.graphql<

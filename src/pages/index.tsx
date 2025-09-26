@@ -1,5 +1,5 @@
 import Footer from "@/components/layout/Footer";
-import { selectFeedToken, selectRoomList } from "@/lib/store/rooms";
+import { selectRoomList } from "@/lib/store/rooms";
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -8,23 +8,19 @@ import { useSelector } from "react-redux";
 import {
   StreamApp,
   FlatFeed,
-  StatusUpdateForm,
   DefaultUT,
   LoadMorePaginator,
-  InfiniteScrollPaginator,
 } from "react-activity-feed";
 import { LoadingIndicator as DefaultLoadingIndicator } from "react-file-utils";
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import Post from "@/components/ui/Post";
 import { ActivityType } from "@/types";
 import PostsFilterModal from "@/components/ui/modals/PostsFileterModal";
 import { useRouter } from "next/router";
 import {
-  Activity,
   EnrichedActivity,
   EnrichedUser,
   ReactionAPIResponse,
-  UR,
 } from "getstream";
 import { selectTagsList } from "@/lib/store/tags";
 import { useAuth } from "@/lib/hooks/useAuth";

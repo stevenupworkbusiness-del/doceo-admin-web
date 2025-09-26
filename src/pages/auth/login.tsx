@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Auth, withSSRContext } from "aws-amplify";
 import { Formik } from "formik";
-import { FaCheck } from "react-icons/fa";
 import { useRouter } from "next/router";
 import { GetServerSideProps } from "next";
 import { useDispatch } from "react-redux";

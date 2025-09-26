@@ -1,64 +1,18 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
-import { useSearchParams, useSelectedLayoutSegment } from 'next/navigation';
-import { useRouter } from 'next/router';
-import { NextPage } from 'next';
-import { LiteralStringForUnion, StreamChat, ChannelFilters, ChannelSort, UserResponse, ExtendableGenerics, UserFilters, MemberSort } from 'stream-chat';
-import { Chat } from 'stream-chat-react';
-import { Modal, Button } from 'react-bootstrap';
-// import Spinner from '@/components/ui/Spinner';
 import Footer from '@/components/layout/Footer';
-import { ChannelDetail, TeamChatGenerics } from '@/types';
-// import { useChatClient } from '@/lib/getstream/context';
-import { ChannelListContainer } from '@/components/channel/ChannelListContainer/ChannelListContainer';
-import { ChannelContainer } from '@/components/channel/ChannelContainer/ChannelContainer';
-import { useConnectUser } from '@/lib/getstream/useConnectUser';
-import { GetstreamState, useChatClient } from '@/lib/getstream/context';
+import { ChannelDetail} from '@/types';
 import { useSelector } from 'react-redux';
-import { selectSelectedRoom, selectSpecificRoom } from '@/lib/store/rooms';
-// import { selectSelectedRoom, selectShowReplyModal, selectSpecificRoom } from '@/lib/store/rooms';
-// import EditReplyModal from '@/modals/EditReplyModal';
-// import JoinedRoomsModal from '@/components/ui/modals/JoinedRoomsModal';
-// import FormModal from '@/components/ui/modals/FormModal';
-import { GraphQLResult } from '@aws-amplify/api-graphql';
-// import StreamIntegrationTable from '@/components/layout/StreamIntegrationTable';
-import { CreateUserToken } from '@/graphql/queries';
-import { Auth, withSSRContext, API } from 'aws-amplify';
+import { selectSelectedRoom } from '@/lib/store/rooms';
 
-// const DynamicVideoReplyModal = dynamic(() => import('@/components/ui/modals/VideoReplyModal'), { ssr: false });
-
-const options = {};
-const sort: ChannelSort<TeamChatGenerics> = { last_message_at: -1, updated_at: -1 };
 
 const SingleRoom = () => {
-    // const id = useSearchParams().get('id');
-    // const room = useSelector( selectSpecificRoom(id) );
     const selectedRoom = useSelector(selectSelectedRoom);
-    console.log('selectedRoom: ', selectedRoom)
-    // const chatClient = useConnectUser();
-    // const chatClient = useChatClient().client;
-    const [createType, setCreateType] = useState('');
-    const [isCreating, setIsCreating] = useState(false);
-    const [recordStates, setRecordStates] = useState({
-        recordScreen: false,
-        insterFace: "",
-        upperLimit: 0,
-    })
-    const [isEditing, setIsEditing] = useState(false);
-
     const [value, setvalue] = useState("Off");
-
-    // const showReplyModal = useSelector(selectShowReplyModal);
     const [showRoomsList, toggleRoomsList] = useState(false);
     const [showForm, setShowForm] = useState(false);
 
-    // if (!chatClient || !(selectedRoom?.channel.id)) return (
-    //     <div className="fixed -translate-x-5 -translate-y-5 left-1/2 top-1/2">
-    //         <Spinner size={50} />
-    //     </div>
-    // )
 
     const handleOptionOnOfChange = (e: any) => {
         if (e.target.value == "On") {
@@ -67,14 +21,8 @@ const SingleRoom = () => {
         else {
             setvalue("Off");
             console.log('value in recor UE: ', value)
-            console.log("Executed: ")
         }
     }
-
-    // useEffect(() => {
-    //     // updateOnOff();
-    //     console.log("Executed:0000");
-    // }, [value]);
 
     return (
         <>

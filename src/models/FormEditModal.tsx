@@ -1,46 +1,26 @@
-import { Storage } from "aws-amplify";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 
-import Image from "next/image";
-
-import { ErrorMessage, Field, Formik, FormikProps } from "formik";
-
-import { useSelector, useDispatch } from "react-redux";
-
-import { DefaultGenerics, Channel as StreamChatChannel } from "stream-chat";
-
-// import { roomsActions, selectAnswerTo, selectReplyDraft, selectReplyTo, selectSelectedRoom, selectedJoinedRooms } from '@/lib/store/rooms';
+import { Formik } from "formik";
 
 import { useChatClient } from "@/lib/getstream/context";
 
 import Spinner from "@/components/ui/Spinner";
 
-// import useNotification from '@/lib/hooks/useNotification';
-
-import axios from "axios";
-
 import { useAuth } from "@/lib/hooks/useAuth";
-
-import { useChatContext } from "stream-chat-react";
 
 import type { TeamChatGenerics } from "@/types";
 
-import { StreamChat, Event } from "stream-chat";
-
-import { connect } from "getstream";
+import { StreamChat } from "stream-chat";
 
 import { CreateUserToken } from "@/graphql/queries";
 
 import { GraphQLResult } from "@aws-amplify/api-graphql";
 
-import { Auth, withSSRContext, API } from "aws-amplify";
-
-import { uploadImage } from "@/utils/uploadImage";
-
-import { resizeImage } from "@/utils";
+import { Auth, API } from "aws-amplify";
 
 import { ChannelResponse } from "stream-chat";
+import { createRecordingSettingsChannel, handleFileUpload, updateChannelWithEvent } from "@/utils";
 
 // At the top of the file, add this interface
 
@@ -182,8 +162,6 @@ const FormEditModal: React.FC<Props> = ({
 
   const [step, setStep] = useState(1);
 
-  const dispatch = useDispatch();
-
   const [image, setImage] = useState<File | null>(null);
 
   const [videoUrl, setVideoUrl] = useState<string>("");
@@ -258,38 +236,6 @@ const FormEditModal: React.FC<Props> = ({
 
   const submitButtonRef = useRef<HTMLButtonElement>(null);
 
-  const handleFileUpload = async (file: File) => {
-    try {
-      const formData = new FormData();
-      formData.append("file", file);
-
-      const response = await fetch("/api/upload", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (!response.ok) throw new Error("Upload failed");
-
-      const data = await response.json();
-      console.log("data: ", data);
-
-      // If the returned URL is relative, prepend the current origin
-      let url = data.url;
-      if (url && !/^https?:\/\//i.test(url)) {
-        // Use window.location.origin for client-side
-        url = `${window.location.origin}${url.startsWith("/") ? "" : "/"
-          }${url}`;
-      }
-
-      setVideoUrl(url);
-      setFileType(file.type.startsWith("image/") ? "image" : "video");
-      return url;
-    } catch (error) {
-      console.error("Error uploading file:", error);
-      alert("Failed to upload file");
-    }
-  };
-
   const onSubmit = async (data: any) => {
     setLoading(true);
 
@@ -356,43 +302,11 @@ const FormEditModal: React.FC<Props> = ({
 				...processedData,
 			};
 
-      const newChannel = chatClient.channel("recording_settings", roomId);
-
-      console.log("Creating new channel with data:", channelData);
-
-      await newChannel.watch();
+      const newChannel = await createRecordingSettingsChannel(chatClient, roomId);
 
       // Update channel with the new data
 
-      await newChannel.update(channelData, { text: "Channel Updated" });
-
-      // Force a channel query to ensure data is updated
-
-      await newChannel.query({ state: true });
-
-      // Emit a standard event with proper typing
-
-      chatClient.dispatchEvent({
-        type: "channel.updated",
-
-        channel_type: "recording_settings",
-
-        channel_id: roomId,
-
-        channel: newChannel.data as ChannelResponse<TeamChatGenerics>,
-
-        message: {
-          id: `settings-update-${Date.now()}`,
-
-          text: "Settings updated",
-
-          user_id: chatClient.userID || "",
-
-          created_at: new Date().toISOString(),
-
-          type: "regular",
-        },
-      });
+      updateChannelWithEvent(chatClient, newChannel, channelData);
 
       setvalue(data.showRecordButton); // Set value to "On" after successful submission
 
@@ -421,10 +335,6 @@ const FormEditModal: React.FC<Props> = ({
       if (!chatClient) {
         throw new Error("Chat client not initialized");
       }
-
-      // Get userID for image upload only
-
-      let userID: string | null = null;
 
       if (!roomId) {
         console.error("Room ID is missing.");
@@ -743,7 +653,7 @@ const FormEditModal: React.FC<Props> = ({
                                 const files = e.target.files;
                                 if (files && files.length > 0 && files[0] instanceof File) {
                                   setImage(files[0]);
-                                  const url = await handleFileUpload(files[0]);
+                                  const url = await handleFileUpload(files[0], setVideoUrl, setFileType);
                                   if (url) {
                                     setFieldValue("guidanceVideo", url);
                                     setVideoUrl(url);

@@ -1,9 +1,10 @@
-import { Avatar, ChannelPreviewUIComponentProps, useChatContext } from 'stream-chat-react';
+import { ChannelPreviewUIComponentProps, useChatContext } from 'stream-chat-react';
 
 import type { TeamChatGenerics } from '@/types';
 import { MouseEventHandler } from 'react';
 import { RemoveChannel } from '@/assets/icons/RemoveChannel';
 import { DefaultGenerics } from 'stream-chat';
+import { preventDefaultAndStopPropagation } from '@/utils';
 
 type Props = ChannelPreviewUIComponentProps<DefaultGenerics> & {
 	setIsCreating: React.Dispatch<React.SetStateAction<boolean>>;
@@ -12,13 +13,12 @@ type Props = ChannelPreviewUIComponentProps<DefaultGenerics> & {
 };
 
 export const TeamChannelPreview: React.FC<Props> = (props) => {
-	const { channel, setActiveChannel, setIsCreating, setIsEditing, type } = props;
+	const { channel, setActiveChannel, setIsCreating, setIsEditing } = props;
 
-	const { channel: activeChannel, client } = useChatContext<TeamChatGenerics>();
+	const { channel: activeChannel } = useChatContext<TeamChatGenerics>();
 
 	const removeChannel: MouseEventHandler = async (e) => {
-		e.stopPropagation();
-		e.preventDefault();
+		preventDefaultAndStopPropagation(e);
 
 		if (window.confirm('Are you sure want to delete this channel?')) {
 			try {

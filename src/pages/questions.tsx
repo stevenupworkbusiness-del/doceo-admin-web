@@ -1,19 +1,13 @@
 import Footer from "@/components/layout/Footer";
-import { selectFeedToken, selectRoomList } from "@/lib/store/rooms";
 import Image from "next/image"
 import Link from "next/link"
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import "react-activity-feed/dist/index.css";
-import { useSelector } from "react-redux";
-import { StreamApp, FlatFeed, StatusUpdateForm, DefaultUT, LoadMorePaginator, InfiniteScrollPaginator, } from 'react-activity-feed';
+import { StreamApp, FlatFeed, DefaultUT, LoadMorePaginator } from 'react-activity-feed';
 import { LoadingIndicator as DefaultLoadingIndicator } from 'react-file-utils';
-import axios, { AxiosResponse } from 'axios';
-import Post from "@/components/ui/Post";
+import axios from 'axios';
 import { ActivityType } from '@/types';
-import PostsFilterModal from "@/components/ui/modals/PostsFileterModal";
-import { useRouter } from "next/router";
-import { Activity, EnrichedActivity, EnrichedUser, ReactionAPIResponse, UR } from "getstream";
-import { selectTagsList } from "@/lib/store/tags";
+import {ReactionAPIResponse } from "getstream";
 import { useAuth } from "@/lib/hooks/useAuth";
 import Question from "@/components/ui/Question";
 

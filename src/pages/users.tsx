@@ -2,21 +2,17 @@ import Footer from "@/components/layout/Footer";
 import { GraphQLQuery } from "@aws-amplify/api";
 import UsersFilterModal from "@/components/ui/modals/UsersFileterModal";
 import { selectRoomList } from "@/lib/store/rooms";
-import { selectTagsList } from "@/lib/store/tags";
 import {
-  ActivityType,
   ListUserTagsQuery,
   TeamChatGenerics,
   TeamUserType,
-  UserTag,
 } from "@/types";
-import { EnrichedActivity } from "getstream";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
-import { Amplify, Auth, API } from "aws-amplify";
+import { Auth, API } from "aws-amplify";
 import { useChatClient } from "@/lib/getstream/context";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { LoadingIndicator } from "stream-chat-react";
@@ -26,19 +22,16 @@ import { getFormattedDate } from "@/utils";
 import { listUserTags } from "@/graphql/queries";
 import moment from "moment";
 import { TbTrash } from "react-icons/tb";
-import { useAuth } from "@/lib/hooks/useAuth";
 
 const Users = () => {
   const router = useRouter();
   const [filterModal, toggleFilters] = useState(false);
-  const tags = useSelector(selectTagsList);
   const rooms = useSelector(selectRoomList);
   const chatClient = useChatClient()?.client;
   const [hasMore, setHasMore] = useState(true);
   const [nextToken, setNextToken] = useState("");
   const [userTags, setUserTags] = useState<Array<any>>([]);
   const [isLoading, setLoading] = useState(false);
-  const currentUser = useAuth();
 
   const [users, setUsers] = useState<
     Array<
@@ -59,34 +52,6 @@ const Users = () => {
       loadUsers();
     }
   }, [chatClient]);
-
-  const filteredText = useMemo(() => {
-    const query = router.query;
-    let text = "",
-      filters = [];
-
-    if (query.sex) {
-      filters.push(query.sex);
-    }
-
-    if (query.age) {
-      filters.push(query.age != "60+" ? query.age + "s" : "60+");
-    }
-
-    if (query.tag) {
-      const tag = tags.find((tag) => tag.id === query.tag);
-      filters.push("#" + (tag ? tag.name : "Unknown"));
-    }
-
-    if (query.room) {
-      const room = rooms.find((room) => room.channel.id === query.room);
-      filters.push(room?.channel.name);
-    }
-
-    text = filters.length > 0 ? filters.join(", ") : "All";
-
-    return text;
-  }, [router]);
 
   const getUserTags = (userId: string) => {
     return userTags.filter(

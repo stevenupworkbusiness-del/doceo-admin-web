@@ -2,15 +2,12 @@ import { useEffect, useMemo, useState } from "react";
 import { useChatContext } from "stream-chat-react";
 import Image from "next/image";
 
-import { UserList } from "./UserList";
-
 import { CloseCreateChannel } from "@/assets/icons";
 
 import type {
   Channel,
   ChannelFilters,
   ChannelMemberResponse,
-  User,
   UserResponse,
 } from "stream-chat";
 
@@ -18,7 +15,7 @@ import type { TeamChatGenerics } from "@/types";
 import { getRandomId, resizeImage } from "@/utils";
 import { useSearchParams } from "next/navigation";
 import { useSelector } from "react-redux";
-import { selectTags, selectTagsList } from "@/lib/store/tags";
+import { selectTagsList } from "@/lib/store/tags";
 import { Storage } from "aws-amplify";
 
 type InputProps = {
@@ -298,7 +295,7 @@ type Props = {
 };
 
 export const CreateChannel: React.FC<Props> = (props) => {
-  const { createType, filters, setIsCreating, channel } = props;
+  const { createType, setIsCreating } = props;
   const roomId = useSearchParams().get("id");
 
   const { client, setActiveChannel } = useChatContext<TeamChatGenerics>();
@@ -314,9 +311,6 @@ export const CreateChannel: React.FC<Props> = (props) => {
   const [roomMembers, setRoomMembers] = useState<
     ChannelMemberResponse<TeamChatGenerics>[]
   >([]);
-  const [selectedUsers, setSelectedUsers] = useState<string[] | undefined>([
-    client.userID || "",
-  ]);
 
   useEffect(() => {
     const getRoomMembers = async () => {

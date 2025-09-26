@@ -1,12 +1,10 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/router";
 
 const CheckoutPage = () => {
   const router = useRouter();
   const { slug } = router.query;
-  console.log(slug);
 
   return (
     <div className="h-screen flex items-center justify-center flex-col text-[#4f5660] bg-white text-[17px] px-5">

@@ -10,7 +10,6 @@ import {
 	useChannelActionContext,
 	Window,
 	MessageToSend,
-	ChannelHeader,
 } from 'stream-chat-react';
 
 import { PinnedMessageList } from '../PinnedMessageList/PinnedMessageList';

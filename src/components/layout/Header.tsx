@@ -1,9 +1,7 @@
-import React, { MouseEventHandler, useRef, useState, useEffect } from "react";
+import React, { MouseEventHandler, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  TbSmartHome,
-  TbUsers,
   TbApps,
   TbSearch,
   TbMenu2,
@@ -12,7 +10,6 @@ import {
   TbMoon,
   TbTags,
   TbMicrophone2,
-  TbMessageReport,
   TbArchive,
   TbMessages,
 } from "react-icons/tb";

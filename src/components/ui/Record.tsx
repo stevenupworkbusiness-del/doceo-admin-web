@@ -1,8 +1,8 @@
-import React, { MouseEventHandler, useEffect, useMemo, useState } from 'react';
+import React, { MouseEventHandler, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useDispatch } from 'react-redux';
-import { MdOutlineComment, MdOutlineEdit, MdOutlineDelete } from 'react-icons/md';
+import { MdOutlineEdit, MdOutlineDelete } from 'react-icons/md';
 import { ChannelDetail } from '@/types';
 import { getAvatarText } from '@/utils';
 import { roomsActions } from '@/lib/store/rooms';
@@ -41,16 +41,6 @@ const Room: React.FC<RoomProps> = ({ room }) => {
             });
         }
     }, [chatClient, room])
- 
-    // const doctors = room.members.filter((member) => member?.user?.role === 'doctor');
- 
-    // const feedsCount = useMemo(() => {
-    //  console.log("update state", roomState);
-    //  return roomState?._channel.data!['feedsCount'] ?? (room.channel.feedsCount ?? 0);
-    // }, [room, roomState]);
-    // const membersCount = useMemo(() => {
-    //  return roomState?.members.length ?? (room?.members.length ?? 0);
-    // }, [room, roomState]);
  
     const onEditRoom: MouseEventHandler<HTMLAnchorElement> = (e) => {
         e.preventDefault();

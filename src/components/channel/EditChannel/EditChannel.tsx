@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useChatContext } from "stream-chat-react";
 
-import { UserList } from "../CreateChannel/UserList";
 
 import { CloseCreateChannel } from "@/assets/icons";
 
@@ -13,7 +12,6 @@ import type {
 
 import type { TeamChatGenerics } from "@/types";
 import { useSearchParams } from "next/navigation";
-import axios from "axios";
 import { useSelector } from "react-redux";
 import { selectTagsList } from "@/lib/store/tags";
 import Image from "next/image";
@@ -279,7 +277,7 @@ type Props = {
 };
 
 export const EditChannel: React.FC<Props> = (props) => {
-  const { filters, setIsEditing } = props;
+  const { setIsEditing } = props;
   const roomId = useSearchParams().get("id");
 
   const { client, channel } = useChatContext<TeamChatGenerics>();
@@ -309,7 +307,6 @@ export const EditChannel: React.FC<Props> = (props) => {
     isoToLocal(channel?.data?.endTime as string) ?? ""
   );
   const [channelImage, setChannelImage] = useState<File>();
-  // const [selectedUsers, setSelectedUsers] = useState<string[] | undefined>();
 
   useEffect(() => {
     channel?.data?.room;
@@ -340,9 +337,6 @@ export const EditChannel: React.FC<Props> = (props) => {
   ) => {
     event.preventDefault();
 
-    const nameChanged =
-      channelName !== (channel?.data?.name || channel?.data?.id);
-
     let newImage;
 
     if (channelImage) {
@@ -357,7 +351,6 @@ export const EditChannel: React.FC<Props> = (props) => {
       newImage = (await Storage.get(res.key)).split("?")[0];
     }
 
-    // if (nameChanged) {
     await channel?.updatePartial({
       set: {
         name: channelName,
@@ -367,16 +360,9 @@ export const EditChannel: React.FC<Props> = (props) => {
         private: channelPublish,
       },
     });
-    // }
-
-    // if (selectedUsers?.length) {
-    // 	const users = selectedUsers.map((user) => user);
-    // 	await channel?.addMembers(users);
-    // }
 
     setChannelName("");
     setIsEditing(false);
-    // setSelectedUsers(undefined);
   };
 
   return (

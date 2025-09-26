@@ -1,4 +1,4 @@
-import { Channel, ChannelDetail } from '@/types';
+import { ChannelDetail } from '@/types';
 import { createSelector, createSlice } from '@reduxjs/toolkit';
 import { Payload, RootState } from '.';
 

@@ -1,7 +1,7 @@
-import { API, Auth } from 'aws-amplify';
+import { API} from 'aws-amplify';
 import { GraphQLQuery } from '@aws-amplify/api';
 import React, { useCallback, useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { LoadingIndicator } from 'stream-chat-react';
 import Link from 'next/link';
 import Image from 'next/image';

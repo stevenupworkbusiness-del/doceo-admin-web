@@ -1,6 +1,6 @@
-import { Channel, ChannelDetail, Tag } from '@/types';
+import { Tag } from '@/types';
 import { createSelector, createSlice } from '@reduxjs/toolkit';
-import { Payload, RootState } from '.';
+import { RootState } from '.';
 
 type TagsState = {
 	list: Array<Tag>
